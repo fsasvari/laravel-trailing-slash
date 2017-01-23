@@ -1,0 +1,23 @@
+{
+    "name": "fsasvari/laravel-trailing-slash",
+    "description": "Adds redirection with trailing slash in Laravel.",
+    "keywords": ["redirect", "laravel", "php"],
+    "license": "MIT",
+    "homepage": "https://github.com/fsasvari/laravel-trailing-slash",
+    "version": "0.1",
+    "authors": [
+        {
+            "name": "Frano Sasvari",
+            "email": "sasvari.frano@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "~5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaravelTrailingSlash": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
