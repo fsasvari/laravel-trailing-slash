@@ -1,0 +1,1 @@
+# laravel-trailing-slashes
