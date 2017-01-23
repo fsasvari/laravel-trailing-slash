@@ -12,7 +12,7 @@ class RoutingServiceProvider extends BaseRoutingServiceProvider
      *
      * @return void
      */
-    protected function register()
+    public function register()
     {
 		$this->app['url'] = $this->app->share(function($app) {
 			$routes = $app['router']->getRoutes();
