@@ -10,12 +10,15 @@ To get started with Laravel Trailing Slash, use Composer to add the package to y
 
 ## Configuration
 
-After installing the Laravel Trailing Slash library, register the `LaravelTrailingSlash\RoutingServiceProvider` in your `config/app.php` configuration file:
+After installing the Laravel Trailing Slash library, register the `LaravelTrailingSlash\RoutingServiceProvider` in your `config/app.php` configuration file immediately after 'Application Service Providers':
 
 ```php
 'providers' => [
-    // Other service providers...
-
+    // Application Service Providers...
+    ...
+    
+    // Other Service Providers...
     LaravelTrailingSlash\RoutingServiceProvider::class,
+    ...
 ],
 ```
