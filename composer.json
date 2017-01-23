@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "LaravelTrailingSlash": "src/"
+            "LaravelTrailingSlash\\": "src/"
         }
     },
     "minimum-stability": "dev"
