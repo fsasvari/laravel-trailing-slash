@@ -14,9 +14,9 @@ class RoutingServiceProvider extends BaseRoutingServiceProvider
      */
     public function register()
     {
-		$this->app['url'] = $this->app->share(function($app) {
+		$this->app->singleton('url', function($app) {
 			$routes = $app['router']->getRoutes();
-			
+
 			// The URL generator needs the route collection that exists on the router.
             // Keep in mind this is an object, so we're passing by references here
             // and all the registered routes will be available to the generator.
@@ -29,7 +29,7 @@ class RoutingServiceProvider extends BaseRoutingServiceProvider
 			$url->setSessionResolver(function ($app) {
 				return $app['session'];
 			});
-			
+
 			// If the route collection is "rebound", for example, when the routes stay
             // cached for the application, we will need to rebind the routes on the
             // URL generator instance so it has the latest version of the routes.
