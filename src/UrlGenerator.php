@@ -18,4 +18,16 @@ class UrlGenerator extends BaseUrlGenerator
 	{
 		return parent::trimUrl($root, $path, $tail).'/';
 	}
+
+	/**
+     * Format the given URL segments into a single URL.
+     *
+     * @param  string  $root
+     * @param  string  $path
+     * @return string
+     */
+    public function format($root, $path)
+	{
+		return parent::format($root, $path).'/';
+	}
 }
