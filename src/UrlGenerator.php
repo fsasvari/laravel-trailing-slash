@@ -16,7 +16,7 @@ class UrlGenerator extends BaseUrlGenerator
      */
 	protected function trimUrl($root, $path, $tail = '')
 	{
-		return parent::trimUrl($root, $path, $tail).'/';
+		return parent::trimUrl($root, $path, $tail).(str_contains($path, '#') ? '' : '/');
 	}
 
 	/**
@@ -28,6 +28,6 @@ class UrlGenerator extends BaseUrlGenerator
      */
     public function format($root, $path)
 	{
-		return parent::format($root, $path).'/';
+		return parent::format($root, $path).(str_contains($path, '#') ? '' : '/');
 	}
 }
