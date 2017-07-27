@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.5 (2017-07-22)
+
+### Fixed
+ - Removed `version` info from `composer.json` so that Packagist can properly pull versions from github repository
+
 ## v0.1.4 (2017-07-22)
 
 ### Added
