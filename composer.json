@@ -4,7 +4,6 @@
     "keywords": ["redirect", "laravel", "php"],
     "license": "MIT",
     "homepage": "https://github.com/fsasvari/laravel-trailing-slash",
-    "version": "0.1",
     "authors": [
         {
             "name": "Frano Sasvari",
