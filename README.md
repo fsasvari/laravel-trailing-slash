@@ -22,3 +22,35 @@ After installing the Laravel Trailing Slash library, register the `LaravelTraili
     // ...
 ],
 ```
+
+Copy following redirection code from `public/.htaccess` to your own project:
+
+```
+<IfModule mod_rewrite.c>
+    # Redirect To Trailing Slashes If Not A Folder Or A File...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !(/$|\.)
+    RewriteRule (.*) %{REQUEST_URI}/ [R=301,L]
+</IfModule>
+```
+
+## Usage
+
+### Routes
+
+In routes/web.php, you can use routes with trailing slashes:
+
+```php
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('about/', function () {
+    return view('about');
+});
+
+Route::get('contact/', function () {
+    return view('contact');
+});
+```
