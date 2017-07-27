@@ -19,5 +19,12 @@
             "LaravelTrailingSlash\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelTrailingSlash\\RoutingServiceProvider"
+            ]
+        }
+    },
     "minimum-stability": "dev"
 }
