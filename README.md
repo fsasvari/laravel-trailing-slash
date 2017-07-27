@@ -16,13 +16,9 @@ After installing the Laravel Trailing Slash library, register the `LaravelTraili
 'providers' => [
     // Application Service Providers...
     // ...
-    
+
     // Other Service Providers...
     LaravelTrailingSlash\RoutingServiceProvider::class,
     // ...
 ],
 ```
-
-## Basic Usage
-
-
