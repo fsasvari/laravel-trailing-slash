@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.1.4 (2017-07-22)
+
+### Added
+ - Linked StyleCI with repository
+
+### Changed
+ - Updated README.md
+
 ## v0.1.3 (2017-07-22)
 
 ### Changed
