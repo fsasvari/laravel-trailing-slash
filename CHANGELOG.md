@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.3 (2017-07-22)
+
+### Changed
+ - Moved .htaccess file from ´src/´ to ´public/´ folder
+ - Updated README.md
+
 ## v0.1.2 (2017-07-22)
 
 ### Changed
