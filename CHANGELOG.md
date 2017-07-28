@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.5 (2017-07-22)
+
+### Fixed
+ - Removed `version` info from `composer.json` so that Packagist can properly pull versions from github repository
+
 ## v0.1.4 (2017-07-22)
 
 ### Added
@@ -11,7 +16,7 @@
 ## v0.1.3 (2017-07-22)
 
 ### Changed
- - Moved .htaccess file from ´src/´ to ´public/´ folder
+ - Moved .htaccess file from `src/` to `public/` folder
  - Updated README.md
 
 ## v0.1.2 (2017-07-22)
