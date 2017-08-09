@@ -1,13 +1,12 @@
-<p align="center">
-    <a href="https://styleci.io/repos/79834672"><img src="https://img.shields.io/badge/Built_for-Laravel-orange.svg" alt="Build For Laravel"></a>
-    <a href="https://packagist.org/packages/fsasvari/laravel-trailing-slash"><img src="https://poser.pugx.org/fsasvari/laravel-trailing-slash/d/total.svg" alt="Total Downloads"></a>
-    <a href="https://packagist.org/packages/fsasvari/laravel-trailing-slash"><img src="https://poser.pugx.org/fsasvari/laravel-trailing-slash/v/stable.svg" alt="Latest Stable Version"></a>
-    <a href="https://packagist.org/packages/fsasvari/laravel-trailing-slash"><img src="https://poser.pugx.org/fsasvari/laravel-trailing-slash/license.svg" alt="License"></a>
-</p>
-
 # Laravel Trailing Slash
 
 Adds redirection with trailing slash in Laravel.
+
+[![Build For Laravel](https://img.shields.io/badge/Built_for-Laravel-orange.svg)](https://styleci.io/repos/79834672)
+[![Latest Stable Version](https://poser.pugx.org/fsasvari/laravel-trailing-slash/v/stable)](https://packagist.org/packages/fsasvari/laravel-trailing-slash)
+[![Latest Unstable Version](https://poser.pugx.org/fsasvari/laravel-trailing-slash/v/unstable)](https://packagist.org/packages/fsasvari/laravel-trailing-slash)
+[![Total Downloads](https://poser.pugx.org/fsasvari/laravel-trailing-slash/downloads)](https://packagist.org/packages/fsasvari/laravel-trailing-slash)
+[![License](https://poser.pugx.org/fsasvari/laravel-trailing-slash/license)](https://packagist.org/packages/fsasvari/laravel-trailing-slash)
 
 ## Installation
 
