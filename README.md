@@ -11,13 +11,23 @@ Adds redirection with trailing slash in Laravel.
 
 ## Installation
 
-To get started with Laravel Trailing Slash, use Composer to add the package to your project's dependencies:
+### Step 1: Install package
 
-    composer require fsasvari/laravel-trailing-slash
+To get started with Laravel Trailing Slash, use Composer command to add the package to your composer.json project's dependencies:
 
-## Configuration
+```
+composer require fsasvari/laravel-trailing-slash
+```
 
-After installing the Laravel Trailing Slash library, register the `LaravelTrailingSlash\RoutingServiceProvider` in your `config/app.php` configuration file immediately after 'Application Service Providers':
+Or add it directly by copying next line into composer.json:
+
+```
+"fsasvari/laravel-trailing-slash": "0.1.*"
+```
+
+### Step 2: Service Provider
+
+After installing the Laravel Trailing Slash library, register the `LaravelTrailingSlash\RoutingServiceProvider` in your `config/app.php` configuration file:
 
 ```php
 'providers' => [
@@ -29,6 +39,8 @@ After installing the Laravel Trailing Slash library, register the `LaravelTraili
     // ...
 ],
 ```
+
+### Step 3: .htaccess
 
 Copy following redirection code from `public/.htaccess` to your own project:
 
@@ -42,11 +54,9 @@ Copy following redirection code from `public/.htaccess` to your own project:
 </IfModule>
 ```
 
-## Usage
+### Step 4: Routes
 
-### Routes
-
-In routes/web.php, you can use routes with trailing slashes:
+In routes/web.php, you must use routes with trailing slashes now:
 
 ```php
 Route::get('/', function () {
@@ -61,3 +71,27 @@ Route::get('contact/', function () {
     return view('contact');
 });
 ```
+
+## Usage
+
+Every time you use some Laravel redirect function, trailing slash ("/") will be applied at the end of url.
+
+```php
+return redirect('about/');
+
+return back()->withInput();
+
+return redirect()->route('text', ['id' => 1]);
+
+return redirect()->action('IndexController@about');
+```
+
+## Licence
+
+MIT Licence. Refer to the [LICENSE](https://github.com/fsasvari/laravel-trailing-slash/blob/master/LICENSE.md) file to get more info.
+
+## Author
+
+Frano Šašvari
+
+Email: sasvari.frano@gmail.com
