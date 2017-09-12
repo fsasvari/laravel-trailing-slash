@@ -35,7 +35,7 @@ class Request extends BaseRequest
     {
         $pattern = parent::path();
 
-        return ($pattern == '/' ? '' : $pattern.'/');
+        return $pattern == '/' ? '' : $pattern.'/';
     }
 
     /**
