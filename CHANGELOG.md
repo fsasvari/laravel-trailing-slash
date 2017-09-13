@@ -1,11 +1,5 @@
 # CHANGELOG
 
-## v0.2 (2017-09-12)
-
-### Added
- - Added new `LaravelTrailingSlash\Request` class which extends `Illuminate\Http\Request`
- - Override `root()`, `url()`, `path()` and `segments()` methods in `Request` class
-
 ## v0.1.6 (2017-07-28)
 
 ### Added

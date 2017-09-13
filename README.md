@@ -21,28 +21,10 @@ composer require fsasvari/laravel-trailing-slash
 Or add it directly by copying next line into composer.json:
 
 ```
-"fsasvari/laravel-trailing-slash": "0.2.*"
+"fsasvari/laravel-trailing-slash": "0.1.*"
 ```
 
-### Step 2: index file
-
-In `public/index.php` file change base `$request`:
-
-```php
-$response = $kernel->handle(
-    $request = Illuminate\Http\Request::capture()
-);
-```
-
-With `$request` from LaravelTrailingSlash:
-
-```php
-$response = $kernel->handle(
-    $request = LaravelTrailingSlash\Request::capture()
-);
-```
-
-### Step 3: Service Provider
+### Step 2: Service Provider
 
 After installing the Laravel Trailing Slash library, register the `LaravelTrailingSlash\RoutingServiceProvider` in your `config/app.php` configuration file:
 
@@ -57,7 +39,7 @@ After installing the Laravel Trailing Slash library, register the `LaravelTraili
 ],
 ```
 
-### Step 4: .htaccess
+### Step 3: .htaccess
 
 Copy following redirection code from `public/.htaccess` to your own project:
 
@@ -71,7 +53,7 @@ Copy following redirection code from `public/.htaccess` to your own project:
 </IfModule>
 ```
 
-### Step 5: Routes
+### Step 4: Routes
 
 In routes/web.php, you must use routes with trailing slashes now:
 
