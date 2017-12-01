@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.7 (2017-12-01)
+
+### Fixed
+ - Fixed an error with the session handler
+
 ## v0.1.6 (2017-07-28)
 
 ### Added
