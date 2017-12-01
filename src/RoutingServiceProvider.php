@@ -25,7 +25,7 @@ class RoutingServiceProvider extends BaseRoutingServiceProvider
                 $routes, $app->rebinding('request', $this->requestRebinder())
             );
 
-            $url->setSessionResolver(function ($app) {
+            $url->setSessionResolver(function () use ($app) {
                 return $app['session'];
             });
 
