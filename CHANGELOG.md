@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.8 (2017-12-18)
+
+### Added
+ - Added `.travis.yml` file
+
 ## v0.1.7 (2017-12-01)
 
 ### Fixed
