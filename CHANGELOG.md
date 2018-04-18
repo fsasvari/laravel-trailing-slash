@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.9 (2018-04-18)
+
+### Added
+ - Added extend of `Illuminate\Pagination\Paginator` and `Illuminate\Pagination\LengthAwarePaginator` classes for pagination links fix
+
 ## v0.1.8 (2017-12-18)
 
 ### Added
