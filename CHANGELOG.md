@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.10 (2018-04-18)
+
+### Removed
+ - Removed accidentally added `pagination` tests
+
 ## v0.1.9 (2018-04-18)
 
 ### Changed
