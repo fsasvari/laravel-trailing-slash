@@ -85,6 +85,17 @@ return redirect()->route('text', ['id' => 1]);
 return redirect()->action('IndexController@about');
 ```
 
+## ** Notice **
+
+There is a problem with overriding Laravel's `Paginator` and `LengthAwarePaginator` classes. So, every time you use `paginate()` method on your models, query builders etc., you must set current path for pagination links. Example:
+
+```php
+$texts = Text::where('is_active', 1)->paginate();
+$texts->setPath(URL::current());
+
+$texts->links();
+```
+
 ## Licence
 
 MIT Licence. Refer to the [LICENSE](https://github.com/fsasvari/laravel-trailing-slash/blob/master/LICENSE.md) file to get more info.

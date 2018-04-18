@@ -13,6 +13,16 @@ class RoutingServiceProvider extends BaseRoutingServiceProvider
      */
     public function register()
     {
+        $this->registerUrlGenerator();
+    }
+
+    /**
+     * Register the URL generator service.
+     *
+     * @return void
+     */
+    protected function registerUrlGenerator()
+    {
         $this->app->singleton('url', function ($app) {
             $routes = $app['router']->getRoutes();
 
@@ -22,11 +32,20 @@ class RoutingServiceProvider extends BaseRoutingServiceProvider
             $app->instance('routes', $routes);
 
             $url = new UrlGenerator(
-                $routes, $app->rebinding('request', $this->requestRebinder())
+                $routes, $app->rebinding(
+                    'request', $this->requestRebinder()
+                )
             );
 
+            // Next we will set a few service resolvers on the URL generator so it can
+            // get the information it needs to function. This just provides some of
+            // the convenience features to this URL generator like "signed" URLs.
             $url->setSessionResolver(function () use ($app) {
                 return $app['session'];
+            });
+
+            $url->setKeyResolver(function () use ($app) {
+                return $app->make('config')->get('app.key');
             });
 
             // If the route collection is "rebound", for example, when the routes stay
