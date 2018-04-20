@@ -1,12 +1,19 @@
 # Laravel Trailing Slash
 
-Adds redirection with trailing slash in Laravel.
+Adds redirection with trailing slash to Laravel 5.5. For Laravel 5.6 version check out new [0.2.x branch](https://github.com/fsasvari/laravel-trailing-slash/tree/0.2).
 
 [![Build For Laravel](https://img.shields.io/badge/Built_for-Laravel-orange.svg)](https://styleci.io/repos/79834672)
 [![Latest Stable Version](https://poser.pugx.org/fsasvari/laravel-trailing-slash/v/stable)](https://packagist.org/packages/fsasvari/laravel-trailing-slash)
 [![Latest Unstable Version](https://poser.pugx.org/fsasvari/laravel-trailing-slash/v/unstable)](https://packagist.org/packages/fsasvari/laravel-trailing-slash)
 [![Total Downloads](https://poser.pugx.org/fsasvari/laravel-trailing-slash/downloads)](https://packagist.org/packages/fsasvari/laravel-trailing-slash)
 [![License](https://poser.pugx.org/fsasvari/laravel-trailing-slash/license)](https://packagist.org/packages/fsasvari/laravel-trailing-slash)
+
+## Compatibility Chart
+
+| Laravel Trailing Slash                                               | Laravel   | PHP   |
+|----------------------------------------------------------------------|-----------|-------|
+| [0.2.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.2) | 5.6       | 7.1+  |
+| [0.1.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.1) | 5.5       | 7.0+  |
 
 ## Installation
 
