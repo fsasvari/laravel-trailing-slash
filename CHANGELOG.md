@@ -1,9 +1,14 @@
 # CHANGELOG
 
-## v0.1.11 (2018-04-20)
+## v0.1.12 (2018-04-20)
 
 ### Fixed
- - Fixed problem with `Method setKeyResolver does not exist.` for Laravel 5.5 version
+ - Fixed problem with `Method setKeyResolver does not exist.`
+
+## v0.1.11 (2018-04-20)
+
+### Changed
+ - Create 0.1 branch for Laravel 5.5 version
 
 ## v0.1.10 (2018-04-18)
 
