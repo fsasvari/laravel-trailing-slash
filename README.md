@@ -1,5 +1,4 @@
 # Laravel Trailing Slash
-================================================================================
 
 Adds redirection with trailing slash to Laravel 5.6. For Laravel 5.5 version check out old [0.1.x branch](https://github.com/fsasvari/laravel-trailing-slash/tree/0.2).
 
@@ -10,7 +9,6 @@ Adds redirection with trailing slash to Laravel 5.6. For Laravel 5.5 version che
 [![License](https://poser.pugx.org/fsasvari/laravel-trailing-slash/license)](https://packagist.org/packages/fsasvari/laravel-trailing-slash)
 
 ## Compatibility Chart
---------------------------------------------------------------------------------
 
 | Laravel Trailing Slash                                               | Laravel   | PHP   |
 |----------------------------------------------------------------------|-----------|-------|
@@ -18,7 +16,6 @@ Adds redirection with trailing slash to Laravel 5.6. For Laravel 5.5 version che
 | [0.1.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.1) | 5.5       | 7.0+  |
 
 ## Installation
---------------------------------------------------------------------------------
 
 ### Step 1: Install package
 
@@ -82,7 +79,6 @@ Route::get('contact/', function () {
 ```
 
 ## Usage
---------------------------------------------------------------------------------
 
 Every time you use some Laravel redirect function, trailing slash ("/") will be applied at the end of url.
 
@@ -97,7 +93,6 @@ return redirect()->action('IndexController@about');
 ```
 
 ## Notice
---------------------------------------------------------------------------------
 
 There is a problem with overriding Laravel's `Paginator` and `LengthAwarePaginator` classes. So, every time you use `paginate()` method on your models, query builders etc., you must set current path for pagination links. Example:
 
@@ -109,12 +104,10 @@ $texts->links();
 ```
 
 ## Licence
---------------------------------------------------------------------------------
 
 MIT Licence. Refer to the [LICENSE](https://github.com/fsasvari/laravel-trailing-slash/blob/master/LICENSE.md) file to get more info.
 
 ## Author
---------------------------------------------------------------------------------
 
 Frano Šašvari
 
