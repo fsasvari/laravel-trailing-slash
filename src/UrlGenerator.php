@@ -11,25 +11,12 @@ class UrlGenerator extends BaseUrlGenerator
      *
      * @param string $root
      * @param string $path
-     * @param string $tail
+     * @param \Illuminate\Routing\Route|null $route
      *
      * @return string
      */
-    protected function trimUrl($root, $path, $tail = '')
+    public function format($root, $path, $route = null)
     {
-        return parent::trimUrl($root, $path, $tail).(str_contains($path, '#') ? '' : '/');
-    }
-
-    /**
-     * Format the given URL segments into a single URL.
-     *
-     * @param string $root
-     * @param string $path
-     *
-     * @return string
-     */
-    public function format($root, $path)
-    {
-        return parent::format($root, $path).(str_contains($path, '#') ? '' : '/');
+        return parent::format($root, $path, $route).(str_contains($path, '#') ? '' : '/');
     }
 }
