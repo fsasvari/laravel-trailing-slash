@@ -12,7 +12,6 @@ class UrlGenerator extends BaseUrlGenerator
      * @param string $root
      * @param string $path
      * @param \Illuminate\Routing\Route|null $route
-     *
      * @return string
      */
     public function format($root, $path, $route = null)
