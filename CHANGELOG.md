@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.3.3 (2018-10-16)
+
+### Changed
+ - Changed `travis.yml` file, removed `php 7.0` line
+
 ## v0.3.2 (2018-10-16)
 
 ### Changed
