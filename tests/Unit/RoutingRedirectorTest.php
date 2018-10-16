@@ -2,13 +2,13 @@
 
 namespace Tests\Unit;
 
-use Mockery as m;
-use Illuminate\Http\Request;
-use Illuminate\Session\Store;
-use PHPUnit\Framework\TestCase;
-use Illuminate\Routing\Redirector;
-use LaravelTrailingSlash\UrlGenerator;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
+use Illuminate\Session\Store;
+use LaravelTrailingSlash\UrlGenerator;
+use Mockery as m;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\HeaderBag;
 
 class RoutingRedirectorTest extends TestCase
