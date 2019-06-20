@@ -6,6 +6,13 @@ use Illuminate\Routing\RoutingServiceProvider as BaseRoutingServiceProvider;
 
 class RoutingServiceProvider extends BaseRoutingServiceProvider
 {
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/../config/trailingslash.php' => config_path('trailingslash.php'),
+        ]);
+    }
+
     /**
      * Register the URL generator service.
      *
@@ -13,6 +20,10 @@ class RoutingServiceProvider extends BaseRoutingServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/trailingslash.php', 'trailingslash'
+        );
+
         $this->registerUrlGenerator();
     }
 
