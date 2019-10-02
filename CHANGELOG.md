@@ -1,64 +1,27 @@
 # CHANGELOG
 
-## v0.2.0 (2018-04-20)
-
-### Added
- - Added support for Laravel 5.6 version
-
-## v0.1.10 (2018-04-18)
-
-### Removed
- - Removed accidentally added `pagination` tests
-
-## v0.1.9 (2018-04-18)
+## v0.4 (2019-10-02)
 
 ### Changed
- - Cleanup `RoutingServiceProvider` a bit
- - Updated README.md with `pagination` use case
+ - Added support for Laravel 6.0 version
+ - Changed `travis.yml` file, removed `php 7.1` line, added `php 7.2` & `php 7.3`
 
-## v0.1.8 (2017-12-18)
+## v0.3.3 (2018-10-16)
 
-### Added
- - Added `.travis.yml` file
+### Changed
+ - Changed `travis.yml` file, removed `php 7.0` line
 
-## v0.1.7 (2017-12-01)
+## v0.3.2 (2018-10-16)
+
+### Changed
+ - Changed `composer.json` file, added `"php": "^7.1.3"` to require section
+
+## v0.3.1 (2018-10-16)
 
 ### Fixed
- - Fixed an error with the session handler
+ - Fixed RoutingRedirector unit tests
 
-## v0.1.6 (2017-07-28)
-
-### Added
- - Added PHPunit tests
-
-## v0.1.5 (2017-07-27)
-
-### Fixed
- - Removed `version` info from `composer.json` so that Packagist can properly pull versions from github repository
-
-## v0.1.4 (2017-07-27)
+## v0.3.0 (2018-10-01)
 
 ### Added
- - Linked StyleCI with repository
-
-### Changed
- - Updated README.md
-
-## v0.1.3 (2017-07-27)
-
-### Changed
- - Moved .htaccess file from `src/` to `public/` folder
- - Updated README.md
-
-## v0.1.2 (2017-07-27)
-
-### Changed
- - Changed required packages in composer.json
-
-## v0.1.1 (2017-01-25)
-
-### Fixed
- - Fixed problem with `$app->share()` method removed in Laravel 5.4 version
-
-## v0.1 (2017-01-23)
- - Initial release
+ - Added support for Laravel 5.7 version
