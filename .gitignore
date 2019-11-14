@@ -1,7 +1,8 @@
 /vendor
-composer.phar
-composer.lock
-Thumbs.db
 /.project
 /nbproject
 /.idea
+composer.phar
+composer.lock
+Thumbs.db
+.phpunit.result.cache
