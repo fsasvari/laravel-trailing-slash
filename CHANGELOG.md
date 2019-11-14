@@ -1,10 +1,10 @@
 # CHANGELOG
 
-## v0.4 (2019-10-02)
+## v1.0 (2019-11-14)
 
 ### Changed
- - Added support for Laravel 6.0 version
- - Changed `travis.yml` file, removed `php 7.1` line, added `php 7.2` & `php 7.3`
+ - Added support for Laravel 6.x version
+ - Changed `travis.yml` file, removed `php 7.1` line, added `php 7.2` and `php 7.3`
 
 ## v0.3.3 (2018-10-16)
 
