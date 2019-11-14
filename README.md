@@ -1,6 +1,6 @@
 # Laravel Trailing Slash
 
-Adds redirection with trailing slash to Laravel 5.7.
+Adds redirection with trailing slash to Laravel 5.7 - 6.0.
 
 [![Build For Laravel](https://img.shields.io/badge/Built_for-Laravel-orange.svg)](https://styleci.io/repos/79834672)
 [![Latest Stable Version](https://poser.pugx.org/fsasvari/laravel-trailing-slash/v/stable)](https://packagist.org/packages/fsasvari/laravel-trailing-slash)
@@ -12,6 +12,7 @@ Adds redirection with trailing slash to Laravel 5.7.
 
 | Laravel Trailing Slash                                               | Laravel   | PHP     |
 |----------------------------------------------------------------------|-----------|---------|
+| [0.4.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.4) | 5.7       | 7.2+    |
 | [0.3.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.3) | 5.7       | 7.1.3+  |
 | [0.2.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.2) | 5.6       | 7.1.3+  |
 | [0.1.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.1) | 5.5       | 7.0.0+  |
@@ -29,7 +30,7 @@ composer require fsasvari/laravel-trailing-slash
 Or add it directly by copying next line into composer.json:
 
 ```
-"fsasvari/laravel-trailing-slash": "0.3.*"
+"fsasvari/laravel-trailing-slash": "0.4.*"
 ```
 
 ### Step 2: Service Provider
