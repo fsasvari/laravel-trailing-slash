@@ -3,6 +3,7 @@
 namespace LaravelTrailingSlash;
 
 use Illuminate\Routing\UrlGenerator as BaseUrlGenerator;
+use Illuminate\Support\Str;
 
 class UrlGenerator extends BaseUrlGenerator
 {
@@ -17,6 +18,6 @@ class UrlGenerator extends BaseUrlGenerator
      */
     public function format($root, $path, $route = null)
     {
-        return parent::format($root, $path, $route).(str_contains($path, '#') ? '' : '/');
+        return parent::format($root, $path, $route).(Str::contains($path, '#') ? '' : '/');
     }
 }
