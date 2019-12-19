@@ -12,7 +12,7 @@ Adds redirection with trailing slash to Laravel 6.x.
 
 | Laravel Trailing Slash                                                | Laravel   | PHP     |
 |-----------------------------------------------------------------------|-----------|---------|
-| [1.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v1.0.1) | 6.x       | 7.2+    |
+| [1.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v1.1.0) | 6.x       | 7.2+    |
 | [0.3.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.3)  | 5.7-5.8   | 7.1.3+  |
 | [0.2.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.2)  | 5.6       | 7.1.3+  |
 | [0.1.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.1)  | 5.5       | 7.0.0+  |

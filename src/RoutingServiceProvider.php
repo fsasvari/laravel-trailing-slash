@@ -34,7 +34,7 @@ class RoutingServiceProvider extends BaseRoutingServiceProvider
             $url = new UrlGenerator(
                 $routes, $app->rebinding(
                     'request', $this->requestRebinder()
-                )
+                ), $app['config']['app.asset_url']
             );
 
             // Next we will set a few service resolvers on the URL generator so it can
