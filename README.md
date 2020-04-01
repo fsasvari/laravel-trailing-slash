@@ -1,6 +1,6 @@
 # Laravel Trailing Slash
 
-Adds redirection with trailing slash to Laravel 6.x.
+Adds url formatting and redirection with trailing slash to Laravel 7.x, 6.x and 5.x.
 
 [![Build For Laravel](https://img.shields.io/badge/Built_for-Laravel-orange.svg)](https://styleci.io/repos/79834672)
 [![Latest Stable Version](https://poser.pugx.org/fsasvari/laravel-trailing-slash/v/stable)](https://packagist.org/packages/fsasvari/laravel-trailing-slash)
@@ -12,6 +12,7 @@ Adds redirection with trailing slash to Laravel 6.x.
 
 | Laravel Trailing Slash                                                | Laravel   | PHP     |
 |-----------------------------------------------------------------------|-----------|---------|
+| [2.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v2.0.0) | 7.x       | 7.3+    |
 | [1.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v1.1.0) | 6.x       | 7.2+    |
 | [0.3.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.3)  | 5.7-5.8   | 7.1.3+  |
 | [0.2.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.2)  | 5.6       | 7.1.3+  |
