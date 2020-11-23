@@ -18,6 +18,8 @@ class UrlGenerator extends BaseUrlGenerator
      */
     public function format($root, $path, $route = null)
     {
-        return parent::format($root, $path, $route).(Str::contains($path, '#') ? '' : '/');
+        $trailingSlash = (Str::contains($path, '#') ? '' : '/');
+
+        return rtrim(parent::format($root, $path, $route), '/').$trailingSlash;
     }
 }

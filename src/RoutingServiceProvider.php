@@ -44,7 +44,7 @@ class RoutingServiceProvider extends BaseRoutingServiceProvider
             // get the information it needs to function. This just provides some of
             // the convenience features to this URL generator like "signed" URLs.
             $url->setSessionResolver(function () use ($app) {
-                return $app['session'];
+                return $app['session'] ?? null;
             });
 
             $url->setKeyResolver(function () use ($app) {

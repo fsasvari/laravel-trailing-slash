@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v3.0.0 (2020-11-23)
+
+### Added
+ - Added support for Laravel 8.x version
+ - Added support for PHP 8.0 version
+ 
+ ## v2.0.2 (2020-04-01)
+ 
+ ### Added
+  - Added support for Laravel 7.x version
+
 ## v1.1.0 (2019-12-19)
 
 ### Fixed
