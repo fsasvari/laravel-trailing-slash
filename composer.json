@@ -1,13 +1,13 @@
 {
-    "name": "fsasvari/laravel-trailing-slash",
+    "name": "silverhand7/laravel-trailing-slash",
     "description": "The package that adds redirection with trailing slash to Laravel framework.",
     "keywords": ["redirect", "laravel", "php"],
     "license": "MIT",
-    "homepage": "https://github.com/fsasvari/laravel-trailing-slash",
+    "homepage": "https://github.com/silverhand7/laravel-trailing-slash",
     "authors": [
         {
-            "name": "Frano Sasvari",
-            "email": "sasvari.frano@gmail.com"
+            "name": "Silverhand",
+            "email": "liesbutterfly@gmail.com"
         }
     ],
     "require": {
