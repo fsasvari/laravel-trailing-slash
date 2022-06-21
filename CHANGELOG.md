@@ -1,13 +1,17 @@
 # CHANGELOG
+## v4.0.0 (2022-06-21)
+
+### Added
+ - Added support for Laravel 9.x version
 
 ## v3.0.0 (2020-11-23)
 
 ### Added
  - Added support for Laravel 8.x version
  - Added support for PHP 8.0 version
- 
+
  ## v2.0.2 (2020-04-01)
- 
+
  ### Added
   - Added support for Laravel 7.x version
 
