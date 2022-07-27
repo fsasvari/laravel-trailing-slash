@@ -11,8 +11,8 @@
         }
     ],
     "require": {
-        "php": "^7.3|^8.0",
-        "illuminate/routing": "8.*"
+        "php": "^8.0.2",
+        "illuminate/routing": "^9.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.4.2",
