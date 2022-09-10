@@ -1,5 +1,5 @@
 {
-    "name": "fsasvari/laravel-trailing-slash",
+    "name": "streetyo/laravel-trailing-slash",
     "description": "The package that adds redirection with trailing slash to Laravel framework.",
     "keywords": ["redirect", "laravel", "php"],
     "license": "MIT",
