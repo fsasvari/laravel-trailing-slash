@@ -1,6 +1,6 @@
 # Laravel Trailing Slash
 
-Adds url formatting and redirection with trailing slash to Laravel framework versions 9.x, 8.x, 7.x, 6.x and 5.x.
+Adds url formatting and redirection with trailing slash to Laravel framework versions 10.x, 9.x, 8.x, 7.x, 6.x and 5.x.
 
 [![Build For Laravel](https://img.shields.io/badge/Built_for-Laravel-orange.svg)](https://styleci.io/repos/79834672)
 [![Latest Stable Version](https://poser.pugx.org/fsasvari/laravel-trailing-slash/v/stable)](https://packagist.org/packages/fsasvari/laravel-trailing-slash)
@@ -10,15 +10,16 @@ Adds url formatting and redirection with trailing slash to Laravel framework ver
 
 ## Compatibility Chart
 
-| Laravel Trailing Slash                                                | Laravel   | PHP        |
-|-----------------------------------------------------------------------|-----------|------------|
-| [4.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v4.0.0) | 9.x       | 8.0.2+     |
-| [3.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v3.0.0) | 8.x       | 7.3+/8.0+  |
-| [2.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v2.0.2) | 7.x       | 7.3+       |
-| [1.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v1.1.0) | 6.x       | 7.2+       |
-| [0.3.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.3)  | 5.7-5.8   | 7.1.3+     |
-| [0.2.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.2)  | 5.6       | 7.1.3+     |
-| [0.1.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.1)  | 5.5       | 7.0.0+     |
+| Laravel Trailing Slash                                                | Laravel | PHP       |
+|-----------------------------------------------------------------------|---------|-----------|
+| [4.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v5.0.0) | 10.x    | 8.1+      |
+| [4.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v4.0.0) | 9.x     | 8.0.2+    |
+| [3.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v3.0.0) | 8.x     | 7.3+/8.0+ |
+| [2.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v2.0.2) | 7.x     | 7.3+      |
+| [1.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v1.1.0) | 6.x     | 7.2+      |
+| [0.3.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.3)  | 5.7-5.8 | 7.1.3+    |
+| [0.2.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.2)  | 5.6     | 7.1.3+    |
+| [0.1.x](https://github.com/fsasvari/laravel-trailing-slash/tree/0.1)  | 5.5     | 7.0.0+    |
 
 ## Installation
 
@@ -33,7 +34,7 @@ composer require fsasvari/laravel-trailing-slash
 Or add it directly by copying next line into composer.json:
 
 ```
-"fsasvari/laravel-trailing-slash": "4.*"
+"fsasvari/laravel-trailing-slash": "5.*"
 ```
 
 ### Step 2: Service Provider
@@ -53,7 +54,7 @@ After installing the Laravel Trailing Slash library, register the `LaravelTraili
 
 ### Step 3: .htaccess
 
-Copy following redirection code from `public/.htaccess` to your own project:
+If you are using apache, copy following redirection code from `public/.htaccess` to your own project:
 
 ```
 <IfModule mod_rewrite.c>

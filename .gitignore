@@ -2,7 +2,9 @@
 /.project
 /nbproject
 /.idea
+/.phpunit.cache
+.phpunit.result.cache
+.editorconfig
 composer.phar
 composer.lock
 Thumbs.db
-.phpunit.result.cache
