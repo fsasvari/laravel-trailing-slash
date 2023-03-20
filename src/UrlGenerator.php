@@ -12,8 +12,8 @@ class UrlGenerator extends BaseUrlGenerator
     /**
      * Format the given URL segments into a single URL.
      *
-     * @param string $root
-     * @param string $path
+     * @param string                         $root
+     * @param string                         $path
      * @param \Illuminate\Routing\Route|null $route
      */
     public function format($root, $path, $route = null): string

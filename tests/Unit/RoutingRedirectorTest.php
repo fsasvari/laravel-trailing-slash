@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Illuminate\Tests\Routing;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
-use LaravelTrailingSlash\UrlGenerator;
 use Illuminate\Session\Store;
+use LaravelTrailingSlash\UrlGenerator;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\HeaderBag;
