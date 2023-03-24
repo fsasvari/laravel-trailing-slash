@@ -22,4 +22,29 @@ class UrlGenerator extends BaseUrlGenerator
 
         return rtrim(parent::format($root, $path, $route), '/').$trailingSlash;
     }
+    
+    /**
+     * Determine if the signature from the given request matches the URL with a trailing slash.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  bool  $absolute
+     * @param  array  $ignoreQuery
+     * @return bool
+     */
+    public function hasCorrectSignature($request, $absolute = true, array $ignoreQuery = [])
+    {
+        $ignoreQuery[] = 'signature';
+
+        $url = $absolute ? $request->url() : '/'.$request->path();
+
+        $queryString = collect(explode('&', $request->server->get('QUERY_STRING')))
+            ->reject(fn ($parameter) => in_array(Str::before($parameter, '='), $ignoreQuery))
+            ->join('&');
+
+        $original = rtrim($url.'/?'.$queryString, '?');
+
+        $signature = hash_hmac('sha256', $original, call_user_func($this->keyResolver));
+
+        return hash_equals($signature, (string) $request->query('signature', ''));
+    }
 }
