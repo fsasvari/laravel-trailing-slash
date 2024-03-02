@@ -1,7 +1,11 @@
 {
     "name": "fsasvari/laravel-trailing-slash",
     "description": "The package that adds redirection with trailing slash to Laravel framework.",
-    "keywords": ["redirect", "laravel", "php"],
+    "keywords": [
+        "redirect",
+        "laravel",
+        "php"
+    ],
     "license": "MIT",
     "homepage": "https://github.com/fsasvari/laravel-trailing-slash",
     "authors": [
@@ -12,11 +16,11 @@
     ],
     "require": {
         "php": "^8.1",
-        "illuminate/routing": "^10.0"
+        "illuminate/routing": "^10.0|^11.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.5",
-        "overtrue/phplint": "^5.5",
+        "overtrue/phplint": "^5.5|^9.1",
         "phpunit/phpunit": "^10.0"
     },
     "autoload": {
