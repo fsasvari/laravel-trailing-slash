@@ -1,4 +1,15 @@
 # CHANGELOG
+
+## v6.0.0 (2025-01-28)
+
+### Added
+- Added support for Laravel 11.x version
+
+## v5.0.0 (2023-03-20)
+
+### Added
+- Added support for Laravel 10.x version
+
 ## v4.0.0 (2022-06-21)
 
 ### Added
