@@ -1,6 +1,6 @@
 # Laravel Trailing Slash
 
-Adds url formatting and redirection with trailing slash to Laravel framework versions 10.x, 9.x, 8.x, 7.x, 6.x and 5.x.
+Adds url formatting and redirection with trailing slash to Laravel framework versions 11.x, 10.x, 9.x, 8.x, 7.x, 6.x and 5.x.
 
 [![Build For Laravel](https://img.shields.io/badge/Built_for-Laravel-orange.svg)](https://styleci.io/repos/79834672)
 [![Latest Stable Version](https://poser.pugx.org/fsasvari/laravel-trailing-slash/v/stable)](https://packagist.org/packages/fsasvari/laravel-trailing-slash)
@@ -12,6 +12,7 @@ Adds url formatting and redirection with trailing slash to Laravel framework ver
 
 | Laravel Trailing Slash                                                | Laravel | PHP       |
 |-----------------------------------------------------------------------|---------|-----------|
+| [6.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v6.0.0) | 11.x    | 8.2+      |
 | [5.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v5.0.0) | 10.x    | 8.1+      |
 | [4.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v4.0.0) | 9.x     | 8.0.2+    |
 | [3.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v3.0.0) | 8.x     | 7.3+/8.0+ |
@@ -46,7 +47,7 @@ After installing the Laravel Trailing Slash library, register the `LaravelTraili
     // Application Service Providers...
     // ...
 
-    // Other Service Providers...
+    // Package Service Providers...
     LaravelTrailingSlash\RoutingServiceProvider::class,
     // ...
 ],
@@ -115,7 +116,7 @@ $texts->links();
 
 ## Licence
 
-MIT Licence. Refer to the [LICENSE](https://github.com/fsasvari/laravel-trailing-slash/blob/master/LICENSE.md) file to get more info.
+MIT Licence. Refer to the [LICENSE](https://github.com/fsasvari/laravel-trailing-slash/blob/main/LICENSE.md) file to get more info.
 
 ## Author
 
