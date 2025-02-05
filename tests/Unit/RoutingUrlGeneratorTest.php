@@ -115,7 +115,7 @@ class RoutingUrlGeneratorTest extends TestCase
         $route = new Route(['GET'], 'foo/bar/subfolder/', ['as' => 'foobar']);
         $routes->add($route);
 
-        $this->assertSame('/subfolder/', $request->getBaseUrl());
+        $this->assertSame('/subfolder', $request->getBaseUrl());
         $this->assertSame('/foo/bar/subfolder/', $url->route('foobar', [], false));
     }
 
@@ -134,7 +134,7 @@ class RoutingUrlGeneratorTest extends TestCase
         $route = new Route(['GET'], 'foo/bar/subfolder/', ['as' => 'foobar']);
         $routes->add($route);
 
-        $this->assertSame('/subfolder/', $request->getBasePath());
+        $this->assertSame('/subfolder', $request->getBasePath());
         $this->assertSame('/subfolder/index.php', $request->getBaseUrl());
         $this->assertSame('/foo/bar/subfolder/', $url->route('foobar', [], false));
     }
