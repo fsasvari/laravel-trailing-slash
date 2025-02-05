@@ -151,12 +151,12 @@ class RoutingUrlGeneratorTest extends TestCase
             $request
         );
 
-        $route = new Route(['GET'], 'foo/bar/subfolder', ['as' => 'foobar']);
+        $route = new Route(['GET'], 'foo/bar/subfolder/', ['as' => 'foobar']);
         $routes->add($route);
 
         $this->assertSame('', $request->getBasePath());
         $this->assertSame('/other.php', $request->getBaseUrl());
-        $this->assertSame('/foo/bar/subfolder', $url->route('foobar', [], false));
+        $this->assertSame('/foo/bar/subfolder/', $url->route('foobar', [], false));
     }
 
     public function testBasicGenerationWithPathFormatting()
@@ -369,14 +369,14 @@ class RoutingUrlGeneratorTest extends TestCase
 
         $url->setRootControllerNamespace('namespace');
 
-        $route = new Route(['GET'], 'root/namespace', ['controller' => '\root\namespace@foo']);
+        $route = new Route(['GET'], 'root/namespace/', ['controller' => '\root\namespace@foo']);
         $routes->add($route);
 
-        $route = new Route(['GET'], 'invokable/namespace', ['controller' => '\root\namespace\InvokableActionStub']);
+        $route = new Route(['GET'], 'invokable/namespace/', ['controller' => '\root\namespace\InvokableActionStub']);
         $routes->add($route);
 
-        $this->assertSame('http://www.foo.com/root/namespace', $url->action('\root\namespace@foo'));
-        $this->assertSame('http://www.foo.com/invokable/namespace', $url->action('\root\namespace\InvokableActionStub'));
+        $this->assertSame('http://www.foo.com/root/namespace/', $url->action('\root\namespace@foo'));
+        $this->assertSame('http://www.foo.com/invokable/namespace/', $url->action('\root\namespace\InvokableActionStub'));
     }
 
     public function testRoutableInterfaceRouting()
@@ -386,13 +386,13 @@ class RoutingUrlGeneratorTest extends TestCase
             Request::create('http://www.foo.com/')
         );
 
-        $route = new Route(['GET'], 'foo/{bar}', ['as' => 'routable']);
+        $route = new Route(['GET'], 'foo/{bar}/', ['as' => 'routable']);
         $routes->add($route);
 
         $model = new RoutableInterfaceStub();
         $model->key = 'routable';
 
-        $this->assertSame('/foo/routable', $url->route('routable', [$model], false));
+        $this->assertSame('/foo/routable/', $url->route('routable', [$model], false));
     }
 
     public function testRoutableInterfaceRoutingWithCustomBindingField()
