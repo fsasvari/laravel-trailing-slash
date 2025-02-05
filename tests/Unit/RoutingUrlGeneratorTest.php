@@ -89,15 +89,15 @@ class RoutingUrlGeneratorTest extends TestCase
             Request::create('http://www.foo.com/')
         );
 
-        $route = new Route(['GET'], '/named-route', ['as' => 'plain']);
+        $route = new Route(['GET'], '/named-route/', ['as' => 'plain']);
         $routes->add($route);
 
         $url->formatHostUsing(function ($host) {
             return str_replace('foo.com', 'foo.org', $host);
         });
 
-        $this->assertSame('http://www.foo.org/foo/bar', $url->to('foo/bar'));
-        $this->assertSame('/named-route', $url->route('plain', [], false));
+        $this->assertSame('http://www.foo.org/foo/bar/', $url->to('foo/bar'));
+        $this->assertSame('/named-route/', $url->route('plain', [], false));
     }
 
     public function testBasicGenerationWithRequestBaseUrlWithSubfolder()
@@ -112,11 +112,11 @@ class RoutingUrlGeneratorTest extends TestCase
             $request
         );
 
-        $route = new Route(['GET'], 'foo/bar/subfolder', ['as' => 'foobar']);
+        $route = new Route(['GET'], 'foo/bar/subfolder/', ['as' => 'foobar']);
         $routes->add($route);
 
-        $this->assertSame('/subfolder', $request->getBaseUrl());
-        $this->assertSame('/foo/bar/subfolder', $url->route('foobar', [], false));
+        $this->assertSame('/subfolder/', $request->getBaseUrl());
+        $this->assertSame('/foo/bar/subfolder/', $url->route('foobar', [], false));
     }
 
     public function testBasicGenerationWithRequestBaseUrlWithSubfolderAndFileSuffix()
@@ -131,12 +131,12 @@ class RoutingUrlGeneratorTest extends TestCase
             $request
         );
 
-        $route = new Route(['GET'], 'foo/bar/subfolder', ['as' => 'foobar']);
+        $route = new Route(['GET'], 'foo/bar/subfolder/', ['as' => 'foobar']);
         $routes->add($route);
 
-        $this->assertSame('/subfolder', $request->getBasePath());
+        $this->assertSame('/subfolder/', $request->getBasePath());
         $this->assertSame('/subfolder/index.php', $request->getBaseUrl());
-        $this->assertSame('/foo/bar/subfolder', $url->route('foobar', [], false));
+        $this->assertSame('/foo/bar/subfolder/', $url->route('foobar', [], false));
     }
 
     public function testBasicGenerationWithRequestBaseUrlWithFileSuffix()
@@ -793,16 +793,16 @@ class RoutingUrlGeneratorTest extends TestCase
             return 'secret';
         });
 
-        $route = new Route(['GET'], 'foo', ['as' => 'foo', function () {
+        $route = new Route(['GET'], 'foo/', ['as' => 'foo', function () {
             //
         }]);
         $routes->add($route);
 
-        $request = Request::create($url->signedRoute('foo'));
+        $request = Request::create($url->signedRoute('foo/'));
 
         $this->assertTrue($url->hasValidSignature($request));
 
-        $request = Request::create($url->signedRoute('foo').'?tampered=true');
+        $request = Request::create($url->signedRoute('foo/').'?tampered=true');
 
         $this->assertFalse($url->hasValidSignature($request));
     }
@@ -839,18 +839,18 @@ class RoutingUrlGeneratorTest extends TestCase
             return 'secret';
         });
 
-        $route = new Route(['GET'], 'foo', ['as' => 'foo', function () {
+        $route = new Route(['GET'], 'foo/', ['as' => 'foo', function () {
             //
         }]);
         $routes->add($route);
 
-        $result = $url->signedRoute('foo', [], null, false);
+        $result = $url->signedRoute('foo/', [], null, false);
 
         $request = Request::create($result);
 
         $this->assertTrue($url->hasValidSignature($request, false));
 
-        $request = Request::create($url->signedRoute('foo', [], null, false).'?tampered=true');
+        $request = Request::create($url->signedRoute('foo/', [], null, false).'?tampered=true');
 
         $this->assertFalse($url->hasValidSignature($request, false));
     }
@@ -873,7 +873,7 @@ class RoutingUrlGeneratorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('reserved');
 
-        Request::create($url->signedRoute('foo', ['signature' => 'bar']));
+        Request::create($url->signedRoute('foo/', ['signature' => 'bar']));
     }
 
     public function testSignedUrlParameterCannotBeNamedExpires()
@@ -894,7 +894,7 @@ class RoutingUrlGeneratorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('reserved');
 
-        Request::create($url->signedRoute('foo', ['expires' => 253402300799]));
+        Request::create($url->signedRoute('foo/', ['expires' => 253402300799]));
     }
 
     public function testRouteGenerationWithBackedEnums()
@@ -904,10 +904,10 @@ class RoutingUrlGeneratorTest extends TestCase
             Request::create('http://www.foo.com/')
         );
 
-        $namedRoute = new Route(['GET'], '/foo/{bar}', ['as' => 'foo.bar']);
+        $namedRoute = new Route(['GET'], '/foo/{bar}/', ['as' => 'foo.bar']);
         $routes->add($namedRoute);
 
-        $this->assertSame('http://www.foo.com/foo/fruits', $url->route('foo.bar', CategoryBackedEnum::Fruits));
+        $this->assertSame('http://www.foo.com/foo/fruits/', $url->route('foo.bar', CategoryBackedEnum::Fruits));
     }
 
     public function testRouteGenerationWithNestedBackedEnums()
@@ -917,11 +917,11 @@ class RoutingUrlGeneratorTest extends TestCase
             Request::create('http://www.foo.com/')
         );
 
-        $namedRoute = new Route(['GET'], '/foo', ['as' => 'foo']);
+        $namedRoute = new Route(['GET'], '/foo/', ['as' => 'foo']);
         $routes->add($namedRoute);
 
         $this->assertSame(
-            'http://www.foo.com/foo?filter%5B0%5D=people&filter%5B1%5D=fruits',
+            'http://www.foo.com/foo/?filter%5B0%5D=people&filter%5B1%5D=fruits',
             $url->route('foo', ['filter' => [CategoryBackedEnum::People, CategoryBackedEnum::Fruits]]),
         );
     }
