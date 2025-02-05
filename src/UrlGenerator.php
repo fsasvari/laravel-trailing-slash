@@ -26,9 +26,10 @@ class UrlGenerator extends BaseUrlGenerator
     /**
      * Determine if the signature from the given request matches the URL.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  bool  $absolute
-     * @param  array  $ignoreQuery
+     * @param \Illuminate\Http\Request $request
+     * @param bool                     $absolute
+     * @param array                    $ignoreQuery
+     *
      * @return bool
      */
     public function hasCorrectSignature(Request $request, $absolute = true, array $ignoreQuery = [])
@@ -62,6 +63,6 @@ class UrlGenerator extends BaseUrlGenerator
 
     private function getTrailingSlash(string $url): string
     {
-        return (Str::contains($url, '#') ? '' : '/');
+        return Str::contains($url, '#') ? '' : '/';
     }
 }
