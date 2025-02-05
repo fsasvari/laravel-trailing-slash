@@ -569,10 +569,10 @@ class RoutingUrlGeneratorTest extends TestCase
             Request::create('https://www.foo.com/')
         );
 
-        $route = new Route(['GET'], 'foo/bar', ['as' => 'foo', 'domain' => 'https://sub.foo.com']);
+        $route = new Route(['GET'], 'foo/bar/', ['as' => 'foo', 'domain' => 'https://sub.foo.com']);
         $routes->add($route);
 
-        $this->assertSame('https://sub.foo.com/foo/bar', $url->route('foo'));
+        $this->assertSame('https://sub.foo.com/foo/bar/', $url->route('foo'));
     }
 
     public function testHttpsRoutesWithDomains()
@@ -585,10 +585,10 @@ class RoutingUrlGeneratorTest extends TestCase
         /*
          * When on HTTPS, no need to specify 443
          */
-        $route = new Route(['GET'], 'foo/bar', ['as' => 'baz', 'domain' => 'sub.foo.com']);
+        $route = new Route(['GET'], 'foo/bar/', ['as' => 'baz', 'domain' => 'sub.foo.com']);
         $routes->add($route);
 
-        $this->assertSame('https://sub.foo.com/foo/bar', $url->route('baz'));
+        $this->assertSame('https://sub.foo.com/foo/bar/', $url->route('baz'));
     }
 
     public function testRoutesWithDomainsThroughProxy()
@@ -600,10 +600,10 @@ class RoutingUrlGeneratorTest extends TestCase
             Request::create('http://www.foo.com/', 'GET', [], [], [], ['REMOTE_ADDR' => '10.0.0.1', 'HTTP_X_FORWARDED_PORT' => '80'])
         );
 
-        $route = new Route(['GET'], 'foo/bar', ['as' => 'foo', 'domain' => 'sub.foo.com']);
+        $route = new Route(['GET'], 'foo/bar/', ['as' => 'foo', 'domain' => 'sub.foo.com']);
         $routes->add($route);
 
-        $this->assertSame('http://sub.foo.com/foo/bar', $url->route('foo'));
+        $this->assertSame('http://sub.foo.com/foo/bar/', $url->route('foo'));
     }
 
     public static function providerRouteParameters()
@@ -630,7 +630,7 @@ class RoutingUrlGeneratorTest extends TestCase
         }]);
         $routes->add($route);
 
-        $this->assertSame('http://www.foo.com:8080/foo?test=123', $url->route('foo', $parameters));
+        $this->assertSame('http://www.foo.com:8080/foo/?test=123', $url->route('foo', $parameters));
     }
 
     public static function provideParametersAndExpectedMeaningfulExceptionMessages()
@@ -694,11 +694,11 @@ class RoutingUrlGeneratorTest extends TestCase
         );
 
         $url->forceRootUrl('https://www.bar.com');
-        $this->assertSame('http://www.bar.com/foo/bar', $url->to('foo/bar'));
+        $this->assertSame('http://www.bar.com/foo/bar/', $url->to('foo/bar/'));
 
         // Ensure trailing slash is trimmed from root URL as UrlGenerator already handles this
         $url->forceRootUrl('http://www.foo.com/');
-        $this->assertSame('http://www.foo.com/bar', $url->to('/bar'));
+        $this->assertSame('http://www.foo.com/bar/', $url->to('/bar/'));
 
         /*
          * Route Based...
@@ -709,13 +709,13 @@ class RoutingUrlGeneratorTest extends TestCase
         );
 
         $url->forceScheme('https');
-        $route = new Route(['GET'], '/foo', ['as' => 'plain']);
+        $route = new Route(['GET'], '/foo/', ['as' => 'plain']);
         $routes->add($route);
 
-        $this->assertSame('https://www.foo.com/foo', $url->route('plain'));
+        $this->assertSame('https://www.foo.com/foo/', $url->route('plain'));
 
         $url->forceRootUrl('https://www.bar.com');
-        $this->assertSame('https://www.bar.com/foo', $url->route('plain'));
+        $this->assertSame('https://www.bar.com/foo/', $url->route('plain'));
     }
 
     public function testForceHttps()
@@ -726,10 +726,10 @@ class RoutingUrlGeneratorTest extends TestCase
         );
 
         $url->forceHttps();
-        $route = new Route(['GET'], '/foo', ['as' => 'plain']);
+        $route = new Route(['GET'], '/foo/', ['as' => 'plain']);
         $routes->add($route);
 
-        $this->assertSame('https://www.foo.com/foo', $url->route('plain'));
+        $this->assertSame('https://www.foo.com/foo/', $url->route('plain'));
     }
 
     public function testPrevious()
@@ -745,7 +745,7 @@ class RoutingUrlGeneratorTest extends TestCase
         $url->getRequest()->headers->remove('referer');
         $this->assertEquals($url->to('/'), $url->previous());
 
-        $this->assertEquals($url->to('/foo'), $url->previous('/foo'));
+        $this->assertEquals($url->to('/foo/'), $url->previous('/foo/'));
     }
 
     public function testPreviousPath()
@@ -761,13 +761,13 @@ class RoutingUrlGeneratorTest extends TestCase
         $url->getRequest()->headers->set('referer', 'http://www.foo.com/?baz=bah');
         $this->assertSame('/', $url->previousPath());
 
-        $url->getRequest()->headers->set('referer', 'http://www.foo.com/bar?baz=bah');
-        $this->assertSame('/bar', $url->previousPath());
+        $url->getRequest()->headers->set('referer', 'http://www.foo.com/bar/?baz=bah');
+        $this->assertSame('/bar/', $url->previousPath());
 
         $url->getRequest()->headers->remove('referer');
         $this->assertSame('/', $url->previousPath());
 
-        $this->assertSame('/bar', $url->previousPath('/bar'));
+        $this->assertSame('/bar/', $url->previousPath('/bar/'));
     }
 
     public function testRouteNotDefinedException()
