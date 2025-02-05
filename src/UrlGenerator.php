@@ -64,7 +64,8 @@ class UrlGenerator extends BaseUrlGenerator
     /**
      * Get the previous path info for the request.
      *
-     * @param  mixed  $fallback
+     * @param mixed $fallback
+     *
      * @return string
      */
     public function previousPath($fallback = false)
