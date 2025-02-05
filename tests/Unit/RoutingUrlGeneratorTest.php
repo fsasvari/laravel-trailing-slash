@@ -166,15 +166,15 @@ class RoutingUrlGeneratorTest extends TestCase
             Request::create('http://www.foo.com/')
         );
 
-        $route = new Route(['GET'], '/named-route', ['as' => 'plain']);
+        $route = new Route(['GET'], '/named-route/', ['as' => 'plain']);
         $routes->add($route);
 
         $url->formatPathUsing(function ($path) {
             return '/something'.$path;
         });
 
-        $this->assertSame('http://www.foo.com/something/foo/bar', $url->to('foo/bar'));
-        $this->assertSame('/something/named-route', $url->route('plain', [], false));
+        $this->assertSame('http://www.foo.com/something/foo/bar/', $url->to('foo/bar'));
+        $this->assertSame('/something/named-route/', $url->route('plain', [], false));
     }
 
     public function testUrlFormattersShouldReceiveTargetRoute()
@@ -184,7 +184,7 @@ class RoutingUrlGeneratorTest extends TestCase
             Request::create('http://abc.com/')
         );
 
-        $namedRoute = new Route(['GET'], '/bar', ['as' => 'plain', 'root' => 'bar.com', 'path' => 'foo']);
+        $namedRoute = new Route(['GET'], '/bar/', ['as' => 'plain', 'root' => 'bar.com', 'path' => 'foo']);
         $routes->add($namedRoute);
 
         $url->formatHostUsing(function ($root, $route) {
@@ -195,8 +195,8 @@ class RoutingUrlGeneratorTest extends TestCase
             return $route ? '/'.$route->getAction('path') : $path;
         });
 
-        $this->assertSame('http://abc.com/foo/bar', $url->to('foo/bar'));
-        $this->assertSame('http://bar.com/foo', $url->route('plain'));
+        $this->assertSame('http://abc.com/foo/bar/', $url->to('foo/bar'));
+        $this->assertSame('http://bar.com/foo/', $url->route('plain'));
     }
 
     public function testBasicRouteGeneration()
@@ -215,19 +215,19 @@ class RoutingUrlGeneratorTest extends TestCase
         /*
          * Named Routes
          */
-        $route = new Route(['GET'], 'foo/bar', ['as' => 'foo']);
+        $route = new Route(['GET'], 'foo/bar/', ['as' => 'foo']);
         $routes->add($route);
 
         /*
          * Parameters...
          */
-        $route = new Route(['GET'], 'foo/bar/{baz}/breeze/{boom}', ['as' => 'bar']);
+        $route = new Route(['GET'], 'foo/bar/{baz}/breeze/{boom}/', ['as' => 'bar']);
         $routes->add($route);
 
         /*
          * Single Parameter...
          */
-        $route = new Route(['GET'], 'foo/bar/{baz}', ['as' => 'foobar']);
+        $route = new Route(['GET'], 'foo/bar/{baz}/', ['as' => 'foobar']);
         $routes->add($route);
 
         /*
@@ -239,38 +239,38 @@ class RoutingUrlGeneratorTest extends TestCase
         /*
          * HTTPS...
          */
-        $route = new Route(['GET'], 'foo/baz', ['as' => 'baz', 'https']);
+        $route = new Route(['GET'], 'foo/baz/', ['as' => 'baz', 'https']);
         $routes->add($route);
 
         /*
          * Controller Route Route
          */
-        $route = new Route(['GET'], 'foo/bam', ['controller' => 'foo@bar']);
+        $route = new Route(['GET'], 'foo/bam/', ['controller' => 'foo@bar']);
         $routes->add($route);
 
         /*
          * Non ASCII routes
          */
-        $route = new Route(['GET'], 'foo/bar/åαф/{baz}', ['as' => 'foobarbaz']);
+        $route = new Route(['GET'], 'foo/bar/åαф/{baz}/', ['as' => 'foobarbaz']);
         $routes->add($route);
 
         /*
          * Fragments
          */
-        $route = new Route(['GET'], 'foo/bar#derp', ['as' => 'fragment']);
+        $route = new Route(['GET'], 'foo/bar/#derp', ['as' => 'fragment']);
         $routes->add($route);
 
         /*
          * Invoke action
          */
-        $route = new Route(['GET'], 'foo/invoke', ['controller' => 'InvokableActionStub']);
+        $route = new Route(['GET'], 'foo/invoke/', ['controller' => 'InvokableActionStub']);
         $routes->add($route);
 
         /*
          * With Default Parameter
          */
         $url->defaults(['locale' => 'en']);
-        $route = new Route(['GET'], 'foo', ['as' => 'defaults', 'domain' => '{locale}.example.com', function () {
+        $route = new Route(['GET'], 'foo/', ['as' => 'defaults', 'domain' => '{locale}.example.com', function () {
             //
         }]);
         $routes->add($route);
@@ -283,37 +283,37 @@ class RoutingUrlGeneratorTest extends TestCase
 
         $this->assertSame('/', $url->route('plain', [], false));
         $this->assertSame('/?foo=bar', $url->route('plain', ['foo' => 'bar'], false));
-        $this->assertSame('http://www.foo.com/foo/bar', $url->route('foo'));
-        $this->assertSame('/foo/bar', $url->route('foo', [], false));
-        $this->assertSame('/foo/bar?foo=bar', $url->route('foo', ['foo' => 'bar'], false));
-        $this->assertSame('http://www.foo.com/foo/bar/taylor/breeze/otwell?fly=wall', $url->route('bar', ['taylor', 'otwell', 'fly' => 'wall']));
-        $this->assertSame('http://www.foo.com/foo/bar/otwell/breeze/taylor?fly=wall', $url->route('bar', ['boom' => 'taylor', 'baz' => 'otwell', 'fly' => 'wall']));
-        $this->assertSame('http://www.foo.com/foo/bar/0', $url->route('foobar', 0));
-        $this->assertSame('http://www.foo.com/foo/bar/2', $url->route('foobar', 2));
-        $this->assertSame('http://www.foo.com/foo/bar/taylor', $url->route('foobar', 'taylor'));
-        $this->assertSame('/foo/bar/taylor/breeze/otwell?fly=wall', $url->route('bar', ['taylor', 'otwell', 'fly' => 'wall'], false));
-        $this->assertSame('https://www.foo.com/foo/baz', $url->route('baz'));
-        $this->assertSame('http://www.foo.com/foo/bam', $url->action('foo@bar'));
-        $this->assertSame('http://www.foo.com/foo/bam', $url->action(['foo', 'bar']));
-        $this->assertSame('http://www.foo.com/foo/invoke', $url->action('InvokableActionStub'));
-        $this->assertSame('http://www.foo.com/foo/bar/taylor/breeze/otwell?wall&woz', $url->route('bar', ['wall', 'woz', 'boom' => 'otwell', 'baz' => 'taylor']));
-        $this->assertSame('http://www.foo.com/foo/bar/taylor/breeze/otwell?wall&woz', $url->route('bar', ['taylor', 'otwell', 'wall', 'woz']));
-        $this->assertSame('http://www.foo.com/foo/bar', $url->route('optional'));
-        $this->assertSame('http://www.foo.com/foo/bar', $url->route('optional', ['baz' => null]));
-        $this->assertSame('http://www.foo.com/foo/bar', $url->route('optional', ['baz' => '']));
-        $this->assertSame('http://www.foo.com/foo/bar/0', $url->route('optional', ['baz' => 0]));
-        $this->assertSame('http://www.foo.com/foo/bar/taylor', $url->route('optional', 'taylor'));
-        $this->assertSame('http://www.foo.com/foo/bar/taylor', $url->route('optional', ['taylor']));
-        $this->assertSame('http://www.foo.com/foo/bar/taylor?breeze', $url->route('optional', ['taylor', 'breeze']));
-        $this->assertSame('http://www.foo.com/foo/bar/taylor?wall=woz', $url->route('optional', ['wall' => 'woz', 'taylor']));
-        $this->assertSame('http://www.foo.com/foo/bar/taylor?wall=woz&breeze', $url->route('optional', ['wall' => 'woz', 'breeze', 'baz' => 'taylor']));
-        $this->assertSame('http://www.foo.com/foo/bar?wall=woz', $url->route('optional', ['wall' => 'woz']));
-        $this->assertSame('http://www.foo.com/foo/bar/%C3%A5%CE%B1%D1%84/%C3%A5%CE%B1%D1%84', $url->route('foobarbaz', ['baz' => 'åαф']));
-        $this->assertSame('/foo/bar#derp', $url->route('fragment', [], false));
-        $this->assertSame('/foo/bar?foo=bar#derp', $url->route('fragment', ['foo' => 'bar'], false));
-        $this->assertSame('/foo/bar?baz=%C3%A5%CE%B1%D1%84#derp', $url->route('fragment', ['baz' => 'åαф'], false));
-        $this->assertSame('http://en.example.com/foo', $url->route('defaults'));
-        $this->assertSame('http://dashboard.myapp.com/backed-enum', $url->route('prefixed.users.index'));
+        $this->assertSame('http://www.foo.com/foo/bar/', $url->route('foo'));
+        $this->assertSame('/foo/bar/', $url->route('foo', [], false));
+        $this->assertSame('/foo/bar/?foo=bar', $url->route('foo', ['foo' => 'bar'], false));
+        $this->assertSame('http://www.foo.com/foo/bar/taylor/breeze/otwell/?fly=wall', $url->route('bar', ['taylor', 'otwell', 'fly' => 'wall']));
+        $this->assertSame('http://www.foo.com/foo/bar/otwell/breeze/taylor/?fly=wall', $url->route('bar', ['boom' => 'taylor', 'baz' => 'otwell', 'fly' => 'wall']));
+        $this->assertSame('http://www.foo.com/foo/bar/0/', $url->route('foobar', 0));
+        $this->assertSame('http://www.foo.com/foo/bar/2/', $url->route('foobar', 2));
+        $this->assertSame('http://www.foo.com/foo/bar/taylor/', $url->route('foobar', 'taylor'));
+        $this->assertSame('/foo/bar/taylor/breeze/otwell/?fly=wall', $url->route('bar', ['taylor', 'otwell', 'fly' => 'wall'], false));
+        $this->assertSame('https://www.foo.com/foo/baz/', $url->route('baz'));
+        $this->assertSame('http://www.foo.com/foo/bam/', $url->action('foo@bar'));
+        $this->assertSame('http://www.foo.com/foo/bam/', $url->action(['foo', 'bar']));
+        $this->assertSame('http://www.foo.com/foo/invoke/', $url->action('InvokableActionStub'));
+        $this->assertSame('http://www.foo.com/foo/bar/taylor/breeze/otwell/?wall&woz', $url->route('bar', ['wall', 'woz', 'boom' => 'otwell', 'baz' => 'taylor']));
+        $this->assertSame('http://www.foo.com/foo/bar/taylor/breeze/otwell/?wall&woz', $url->route('bar', ['taylor', 'otwell', 'wall', 'woz']));
+        $this->assertSame('http://www.foo.com/foo/bar/', $url->route('optional'));
+        $this->assertSame('http://www.foo.com/foo/bar/', $url->route('optional', ['baz' => null]));
+        $this->assertSame('http://www.foo.com/foo/bar/', $url->route('optional', ['baz' => '']));
+        $this->assertSame('http://www.foo.com/foo/bar/0/', $url->route('optional', ['baz' => 0]));
+        $this->assertSame('http://www.foo.com/foo/bar/taylor/', $url->route('optional', 'taylor'));
+        $this->assertSame('http://www.foo.com/foo/bar/taylor/', $url->route('optional', ['taylor']));
+        $this->assertSame('http://www.foo.com/foo/bar/taylor/?breeze', $url->route('optional', ['taylor', 'breeze']));
+        $this->assertSame('http://www.foo.com/foo/bar/taylor/?wall=woz', $url->route('optional', ['wall' => 'woz', 'taylor']));
+        $this->assertSame('http://www.foo.com/foo/bar/taylor/?wall=woz&breeze', $url->route('optional', ['wall' => 'woz', 'breeze', 'baz' => 'taylor']));
+        $this->assertSame('http://www.foo.com/foo/bar/?wall=woz', $url->route('optional', ['wall' => 'woz']));
+        $this->assertSame('http://www.foo.com/foo/bar/%C3%A5%CE%B1%D1%84/%C3%A5%CE%B1%D1%84/', $url->route('foobarbaz', ['baz' => 'åαф']));
+        $this->assertSame('/foo/bar/#derp', $url->route('fragment', [], false));
+        $this->assertSame('/foo/bar/?foo=bar#derp', $url->route('fragment', ['foo' => 'bar'], false));
+        $this->assertSame('/foo/bar/?baz=%C3%A5%CE%B1%D1%84#derp', $url->route('fragment', ['baz' => 'åαф'], false));
+        $this->assertSame('http://en.example.com/foo/', $url->route('defaults'));
+        $this->assertSame('http://dashboard.myapp.com/backed-enum/', $url->route('prefixed.users.index'));
     }
 
     public function testFluentRouteNameDefinitions()
@@ -326,12 +326,12 @@ class RoutingUrlGeneratorTest extends TestCase
         /*
          * Named Routes
          */
-        $route = new Route(['GET'], 'foo/bar', []);
+        $route = new Route(['GET'], 'foo/bar/', []);
         $route->name('foo');
         $routes->add($route);
         $routes->refreshNameLookups();
 
-        $this->assertSame('http://www.foo.com/foo/bar', $url->route('foo'));
+        $this->assertSame('http://www.foo.com/foo/bar/', $url->route('foo'));
     }
 
     public function testControllerRoutesWithADefaultNamespace()
@@ -346,18 +346,18 @@ class RoutingUrlGeneratorTest extends TestCase
         /*
          * Controller Route Route
          */
-        $route = new Route(['GET'], 'foo/bar', ['controller' => 'namespace\foo@bar']);
+        $route = new Route(['GET'], 'foo/bar/', ['controller' => 'namespace\foo@bar']);
         $routes->add($route);
 
-        $route = new Route(['GET'], 'something/else', ['controller' => 'something\foo@bar']);
+        $route = new Route(['GET'], 'something/else/', ['controller' => 'something\foo@bar']);
         $routes->add($route);
 
-        $route = new Route(['GET'], 'foo/invoke', ['controller' => 'namespace\InvokableActionStub']);
+        $route = new Route(['GET'], 'foo/invoke/', ['controller' => 'namespace\InvokableActionStub']);
         $routes->add($route);
 
-        $this->assertSame('http://www.foo.com/foo/bar', $url->action('foo@bar'));
-        $this->assertSame('http://www.foo.com/something/else', $url->action('\something\foo@bar'));
-        $this->assertSame('http://www.foo.com/foo/invoke', $url->action('InvokableActionStub'));
+        $this->assertSame('http://www.foo.com/foo/bar/', $url->action('foo@bar'));
+        $this->assertSame('http://www.foo.com/something/else/', $url->action('\something\foo@bar'));
+        $this->assertSame('http://www.foo.com/foo/invoke/', $url->action('InvokableActionStub'));
     }
 
     public function testControllerRoutesOutsideOfDefaultNamespace()
