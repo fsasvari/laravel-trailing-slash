@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v6.1.0 (2025-02-05)
+
+### Added
+- Added `RoutingUrlGenerator` unit tests
+
+### Fixed
+- Fixed URL signature checker: `hasCorrectSignature()` method
+
 ## v6.0.0 (2025-01-28)
 
 ### Added

@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace LaravelTrailingSlash;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\UrlGenerator as BaseUrlGenerator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 class UrlGenerator extends BaseUrlGenerator
@@ -18,8 +20,74 @@ class UrlGenerator extends BaseUrlGenerator
      */
     public function format($root, $path, $route = null): string
     {
-        $trailingSlash = (Str::contains($path, '#') ? '' : '/');
+        return rtrim(parent::format($root, $path, $route), '/').$this->getTrailingSlash($path);
+    }
 
-        return rtrim(parent::format($root, $path, $route), '/').$trailingSlash;
+    /**
+     * Determine if the signature from the given request matches the URL.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param bool                     $absolute
+     * @param array                    $ignoreQuery
+     *
+     * @return bool
+     */
+    public function hasCorrectSignature(Request $request, $absolute = true, array $ignoreQuery = [])
+    {
+        $ignoreQuery[] = 'signature';
+
+        $url = ($absolute ? $request->url() : '/'.$request->path());
+        $url = $url.$this->getTrailingSlash($url);
+
+        $queryString = (new Collection(explode('&', (string) $request->server->get('QUERY_STRING'))))
+            ->reject(fn ($parameter) => in_array(Str::before($parameter, '='), $ignoreQuery))
+            ->join('&');
+
+        $original = rtrim($url.'?'.$queryString, '?');
+
+        $keys = call_user_func($this->keyResolver);
+
+        $keys = is_array($keys) ? $keys : [$keys];
+
+        foreach ($keys as $key) {
+            if (hash_equals(
+                hash_hmac('sha256', $original, $key),
+                (string) $request->query('signature', '')
+            )) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Get the previous path info for the request.
+     *
+     * @param mixed $fallback
+     *
+     * @return string
+     */
+    public function previousPath($fallback = false)
+    {
+        $previousPath = str_replace(rtrim($this->to('/'), '/'), '', rtrim(preg_replace('/\?.*/', '', $this->previous($fallback)), '/').$this->getTrailingSlash());
+
+        return $previousPath === '' ? '/' : $previousPath;
+    }
+
+    /**
+     * Get trailing slash suffix for path or url, if no dash (#) is present.
+     *
+     * @param string|null $url
+     *
+     * @return string
+     */
+    private function getTrailingSlash(?string $url = null): string
+    {
+        if ($url === null) {
+            return '/';
+        }
+
+        return Str::contains($url, '#') ? '' : '/';
     }
 }
