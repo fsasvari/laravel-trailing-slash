@@ -755,6 +755,9 @@ class RoutingUrlGeneratorTest extends TestCase
             Request::create('http://www.foo.com/')
         );
 
+        $url->getRequest()->headers->set('referer', 'http://www.foo.com?baz=bah');
+        $this->assertSame('/', $url->previousPath());
+
         $url->getRequest()->headers->set('referer', 'http://www.foo.com/?baz=bah');
         $this->assertSame('/', $url->previousPath());
 
