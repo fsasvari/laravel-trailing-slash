@@ -798,11 +798,11 @@ class RoutingUrlGeneratorTest extends TestCase
         }]);
         $routes->add($route);
 
-        $request = Request::create($url->signedRoute('foo/'));
+        $request = Request::create($url->signedRoute('foo'));
 
         $this->assertTrue($url->hasValidSignature($request));
 
-        $request = Request::create($url->signedRoute('foo/').'?tampered=true');
+        $request = Request::create($url->signedRoute('foo').'?tampered=true');
 
         $this->assertFalse($url->hasValidSignature($request));
     }
@@ -844,13 +844,13 @@ class RoutingUrlGeneratorTest extends TestCase
         }]);
         $routes->add($route);
 
-        $result = $url->signedRoute('foo/', [], null, false);
+        $result = $url->signedRoute('foo', [], null, false);
 
         $request = Request::create($result);
 
         $this->assertTrue($url->hasValidSignature($request, false));
 
-        $request = Request::create($url->signedRoute('foo/', [], null, false).'?tampered=true');
+        $request = Request::create($url->signedRoute('foo', [], null, false).'?tampered=true');
 
         $this->assertFalse($url->hasValidSignature($request, false));
     }
@@ -873,7 +873,7 @@ class RoutingUrlGeneratorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('reserved');
 
-        Request::create($url->signedRoute('foo/', ['signature' => 'bar']));
+        Request::create($url->signedRoute('foo', ['signature' => 'bar']));
     }
 
     public function testSignedUrlParameterCannotBeNamedExpires()
@@ -894,7 +894,7 @@ class RoutingUrlGeneratorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('reserved');
 
-        Request::create($url->signedRoute('foo/', ['expires' => 253402300799]));
+        Request::create($url->signedRoute('foo', ['expires' => 253402300799]));
     }
 
     public function testRouteGenerationWithBackedEnums()
