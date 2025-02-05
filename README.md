@@ -35,7 +35,7 @@ composer require fsasvari/laravel-trailing-slash
 Or add it directly by copying next line into composer.json:
 
 ```
-"fsasvari/laravel-trailing-slash": "5.*"
+"fsasvari/laravel-trailing-slash": "6.*"
 ```
 
 ### Step 2: Service Provider
