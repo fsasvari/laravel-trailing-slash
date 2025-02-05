@@ -70,7 +70,7 @@ class UrlGenerator extends BaseUrlGenerator
      */
     public function previousPath($fallback = false)
     {
-        $previousPath = str_replace(rtrim($this->to('/'), '/'), '', rtrim(preg_replace('/\?.*/', '', $this->previous($fallback)), '/'));
+        $previousPath = str_replace(rtrim($this->to('/'), '/'), '', rtrim(preg_replace('/\?.*/', '', $this->previous($fallback)), '/').$this->getTrailingSlash());
 
         return $previousPath === '' ? '/' : $previousPath;
     }
@@ -78,12 +78,16 @@ class UrlGenerator extends BaseUrlGenerator
     /**
      * Get trailing slash suffix for path or url, if no dash (#) is present.
      *
-     * @param string $url
+     * @param string|null $url
      *
      * @return string
      */
-    private function getTrailingSlash(string $url): string
+    private function getTrailingSlash(?string $url = null): string
     {
+        if ($url === null) {
+            return '/';
+        }
+
         return Str::contains($url, '#') ? '' : '/';
     }
 }
