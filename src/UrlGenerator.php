@@ -70,7 +70,10 @@ class UrlGenerator extends BaseUrlGenerator
      */
     public function previousPath($fallback = false)
     {
-        $previousPath = str_replace(rtrim($this->to('/'), '/'), '', rtrim(preg_replace('/\?.*/', '', $this->previous($fallback)), '/').$this->getTrailingSlash());
+        $rootToPath = rtrim($this->to('/'), '/');
+        $previousPath = rtrim(preg_replace('/\?.*/', '', $this->previous($fallback)), '/');
+
+        $previousPath = str_replace($rootToPath, '', $previousPath.$this->getTrailingSlash($previousPath));
 
         return $previousPath === '' ? '/' : $previousPath;
     }
