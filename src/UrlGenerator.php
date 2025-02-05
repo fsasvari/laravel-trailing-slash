@@ -64,7 +64,8 @@ class UrlGenerator extends BaseUrlGenerator
     /**
      * Get the previous path info for the request.
      *
-     * @param  mixed  $fallback
+     * @param mixed $fallback
+     *
      * @return string
      */
     public function previousPath($fallback = false)
@@ -77,7 +78,8 @@ class UrlGenerator extends BaseUrlGenerator
     /**
      * Get trailing slash suffix for path or url, if no dash (#) is present.
      *
-     * @param  string  $url
+     * @param string $url
+     *
      * @return string
      */
     private function getTrailingSlash(string $url): string
