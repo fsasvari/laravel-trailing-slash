@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Illuminate\Tests\Routing;
+namespace Tests\Unit;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
