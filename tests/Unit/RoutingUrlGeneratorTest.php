@@ -402,14 +402,14 @@ class RoutingUrlGeneratorTest extends TestCase
             Request::create('http://www.foo.com/')
         );
 
-        $route = new Route(['GET'], 'foo/{bar:slug}', ['as' => 'routable']);
+        $route = new Route(['GET'], 'foo/{bar:slug}/', ['as' => 'routable']);
         $routes->add($route);
 
         $model = new RoutableInterfaceStub();
         $model->key = 'routable';
 
-        $this->assertSame('/foo/test-slug', $url->route('routable', ['bar' => $model], false));
-        $this->assertSame('/foo/test-slug', $url->route('routable', [$model], false));
+        $this->assertSame('/foo/test-slug/', $url->route('routable', ['bar' => $model], false));
+        $this->assertSame('/foo/test-slug/', $url->route('routable', [$model], false));
     }
 
     public function testRoutableInterfaceRoutingAsQueryString()
@@ -419,15 +419,15 @@ class RoutingUrlGeneratorTest extends TestCase
             Request::create('http://www.foo.com/')
         );
 
-        $route = new Route(['GET'], 'foo', ['as' => 'query-string']);
+        $route = new Route(['GET'], 'foo/', ['as' => 'query-string']);
         $routes->add($route);
 
         $model = new RoutableInterfaceStub();
         $model->key = 'routable';
 
-        $this->assertSame('/foo?routable', $url->route('query-string', $model, false));
-        $this->assertSame('/foo?routable', $url->route('query-string', [$model], false));
-        $this->assertSame('/foo?foo=routable', $url->route('query-string', ['foo' => $model], false));
+        $this->assertSame('/foo/?routable', $url->route('query-string', $model, false));
+        $this->assertSame('/foo/?routable', $url->route('query-string', [$model], false));
+        $this->assertSame('/foo/?foo=routable', $url->route('query-string', ['foo' => $model], false));
     }
 
     /**
@@ -444,7 +444,7 @@ class RoutingUrlGeneratorTest extends TestCase
             Request::create('http://www.foo.com/')
         );
 
-        $route = new Route(['GET'], 'foo/{bar}/{baz:slug}', ['as' => 'routable']);
+        $route = new Route(['GET'], 'foo/{bar}/{baz:slug}/', ['as' => 'routable']);
         $routes->add($route);
 
         $model1 = new RoutableInterfaceStub();
@@ -453,8 +453,8 @@ class RoutingUrlGeneratorTest extends TestCase
         $model2 = new RoutableInterfaceStub();
         $model2->key = 'routable-2';
 
-        $this->assertSame('/foo/routable-1/test-slug', $url->route('routable', ['bar' => $model1, 'baz' => $model2], false));
-        $this->assertSame('/foo/routable-1/test-slug', $url->route('routable', [$model1, $model2], false));
+        $this->assertSame('/foo/routable-1/test-slug/', $url->route('routable', ['bar' => $model1, 'baz' => $model2], false));
+        $this->assertSame('/foo/routable-1/test-slug/', $url->route('routable', [$model1, $model2], false));
     }
 
     public function testRoutableInterfaceRoutingWithSingleParameter()
@@ -464,13 +464,13 @@ class RoutingUrlGeneratorTest extends TestCase
             Request::create('http://www.foo.com/')
         );
 
-        $route = new Route(['GET'], 'foo/{bar}', ['as' => 'routable']);
+        $route = new Route(['GET'], 'foo/{bar}/', ['as' => 'routable']);
         $routes->add($route);
 
         $model = new RoutableInterfaceStub();
         $model->key = 'routable';
 
-        $this->assertSame('/foo/routable', $url->route('routable', $model, false));
+        $this->assertSame('/foo/routable/', $url->route('routable', $model, false));
     }
 
     public function testRoutesMaintainRequestScheme()
@@ -483,10 +483,10 @@ class RoutingUrlGeneratorTest extends TestCase
         /*
          * Named Routes
          */
-        $route = new Route(['GET'], 'foo/bar', ['as' => 'foo']);
+        $route = new Route(['GET'], 'foo/bar/', ['as' => 'foo']);
         $routes->add($route);
 
-        $this->assertSame('https://www.foo.com/foo/bar', $url->route('foo'));
+        $this->assertSame('https://www.foo.com/foo/bar/', $url->route('foo'));
     }
 
     public function testHttpOnlyRoutes()
@@ -499,10 +499,10 @@ class RoutingUrlGeneratorTest extends TestCase
         /*
          * Named Routes
          */
-        $route = new Route(['GET'], 'foo/bar', ['as' => 'foo', 'http']);
+        $route = new Route(['GET'], 'foo/bar/', ['as' => 'foo', 'http']);
         $routes->add($route);
 
-        $this->assertSame('http://www.foo.com/foo/bar', $url->route('foo'));
+        $this->assertSame('http://www.foo.com/foo/bar/', $url->route('foo'));
     }
 
     public function testRoutesWithDomains()
@@ -512,18 +512,18 @@ class RoutingUrlGeneratorTest extends TestCase
             Request::create('http://www.foo.com/')
         );
 
-        $route = new Route(['GET'], 'foo/bar', ['as' => 'foo', 'domain' => 'sub.foo.com']);
+        $route = new Route(['GET'], 'foo/bar/', ['as' => 'foo', 'domain' => 'sub.foo.com']);
         $routes->add($route);
 
         /*
          * Wildcards & Domains...
          */
-        $route = new Route(['GET'], 'foo/bar/{baz}', ['as' => 'bar', 'domain' => 'sub.{foo}.com']);
+        $route = new Route(['GET'], 'foo/bar/{baz}/', ['as' => 'bar', 'domain' => 'sub.{foo}.com']);
         $routes->add($route);
 
-        $this->assertSame('http://sub.foo.com/foo/bar', $url->route('foo'));
-        $this->assertSame('http://sub.taylor.com/foo/bar/otwell', $url->route('bar', ['taylor', 'otwell']));
-        $this->assertSame('/foo/bar/otwell', $url->route('bar', ['taylor', 'otwell'], false));
+        $this->assertSame('http://sub.foo.com/foo/bar/', $url->route('foo'));
+        $this->assertSame('http://sub.taylor.com/foo/bar/otwell/', $url->route('bar', ['taylor', 'otwell']));
+        $this->assertSame('/foo/bar/otwell/', $url->route('bar', ['taylor', 'otwell'], false));
     }
 
     public function testRoutesWithDomainsAndPorts()
@@ -533,17 +533,17 @@ class RoutingUrlGeneratorTest extends TestCase
             Request::create('http://www.foo.com:8080/')
         );
 
-        $route = new Route(['GET'], 'foo/bar', ['as' => 'foo', 'domain' => 'sub.foo.com']);
+        $route = new Route(['GET'], 'foo/bar/', ['as' => 'foo', 'domain' => 'sub.foo.com']);
         $routes->add($route);
 
         /*
          * Wildcards & Domains...
          */
-        $route = new Route(['GET'], 'foo/bar/{baz}', ['as' => 'bar', 'domain' => 'sub.{foo}.com']);
+        $route = new Route(['GET'], 'foo/bar/{baz}/', ['as' => 'bar', 'domain' => 'sub.{foo}.com']);
         $routes->add($route);
 
-        $this->assertSame('http://sub.foo.com:8080/foo/bar', $url->route('foo'));
-        $this->assertSame('http://sub.taylor.com:8080/foo/bar/otwell', $url->route('bar', ['taylor', 'otwell']));
+        $this->assertSame('http://sub.foo.com:8080/foo/bar/', $url->route('foo'));
+        $this->assertSame('http://sub.taylor.com:8080/foo/bar/otwell/', $url->route('bar', ['taylor', 'otwell']));
     }
 
     public function testRoutesWithDomainsStripsProtocols()
@@ -556,10 +556,10 @@ class RoutingUrlGeneratorTest extends TestCase
             Request::create('http://www.foo.com/')
         );
 
-        $route = new Route(['GET'], 'foo/bar', ['as' => 'foo', 'domain' => 'http://sub.foo.com']);
+        $route = new Route(['GET'], 'foo/bar/', ['as' => 'foo', 'domain' => 'http://sub.foo.com']);
         $routes->add($route);
 
-        $this->assertSame('http://sub.foo.com/foo/bar', $url->route('foo'));
+        $this->assertSame('http://sub.foo.com/foo/bar/', $url->route('foo'));
 
         /*
          * https:// Route
