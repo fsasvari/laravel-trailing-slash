@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v6.1.1 (2025-02-05)
+
+### Fixed
+- Fixed `previousPath()` method
+
 ## v6.1.0 (2025-02-05)
 
 ### Added
