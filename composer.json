@@ -19,10 +19,10 @@
     ],
     "require": {
         "php": "^8.2",
-        "illuminate/routing": "^11.0"
+        "illuminate/routing": "^11.0|^12.0"
     },
     "require-dev": {
-        "illuminate/database": "^11.0",
+        "illuminate/database": "^11.0|^12.0",
         "mockery/mockery": "^1.6",
         "overtrue/phplint": "^9.5",
         "phpunit/phpunit": "^11.0"
