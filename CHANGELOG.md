@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v7.0.0 (2025-02-21)
+
+### Added
+- Added support for Laravel 12.x version
+
 ## v6.1.1 (2025-02-05)
 
 ### Fixed
