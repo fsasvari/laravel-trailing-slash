@@ -41,7 +41,18 @@ Or add it directly by copying next line into composer.json:
 
 ### Step 2: Service Provider
 
-After installing the Laravel Trailing Slash library, register the `LaravelTrailingSlash\RoutingServiceProvider` in your `config/app.php` configuration file:
+If you are using `Laravel 11.x` and above, register the `LaravelTrailingSlash\RoutingServiceProvider` in your `bootstrap/providers.php` configuration file:
+
+```php
+return [
+    // Package Service Providers...
+    // ...
+    LaravelTrailingSlash\RoutingServiceProvider::class,
+    // ...
+],
+```
+
+If you are using `Laravel 10.x` and below, register the `LaravelTrailingSlash\RoutingServiceProvider` in your `config/app.php` configuration file:
 
 ```php
 'providers' => [
@@ -49,6 +60,7 @@ After installing the Laravel Trailing Slash library, register the `LaravelTraili
     // ...
 
     // Package Service Providers...
+    // ...
     LaravelTrailingSlash\RoutingServiceProvider::class,
     // ...
 ],
