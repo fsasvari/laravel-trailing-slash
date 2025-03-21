@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaravelTrailingSlash;
 
 use Illuminate\Http\Request;
+use Closure;
 use Illuminate\Routing\UrlGenerator as BaseUrlGenerator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -32,7 +33,7 @@ class UrlGenerator extends BaseUrlGenerator
      *
      * @return bool
      */
-    public function hasCorrectSignature(Request $request, $absolute = true, array $ignoreQuery = [])
+    public function hasCorrectSignature(Request $request, $absolute = true, Closure|array $ignoreQuery = [])
     {
         $ignoreQuery[] = 'signature';
 
