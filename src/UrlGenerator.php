@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace LaravelTrailingSlash;
 
-use Illuminate\Http\Request;
 use Closure;
+use Illuminate\Http\Request;
 use Illuminate\Routing\UrlGenerator as BaseUrlGenerator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
