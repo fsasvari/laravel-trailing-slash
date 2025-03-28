@@ -139,7 +139,5 @@ Email: sasvari.frano@gmail.com
 
 ## Buy me a Beer
 
-[Buy me a Beer](https://buymeacoffee.com/sasvarifras)
-
-![Buy me a Beer](bmc-qr.png "Buy me a Beer")
+[![Buy me a Beer](https://github.com/fsasvari/laravel-trailing-slash/blob/main/bmc_qr.png)](https://buymeacoffee.com/sasvarifras)
 
