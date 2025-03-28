@@ -136,3 +136,10 @@ MIT Licence. Refer to the [LICENSE](https://github.com/fsasvari/laravel-trailing
 Frano Šašvari
 
 Email: sasvari.frano@gmail.com
+
+## Buy me a Beer
+
+[Buy me a Beer](https://buymeacoffee.com/sasvarifras)
+
+![Buy me a Beer](bmc-qr.png "Buy me a Beer")
+
