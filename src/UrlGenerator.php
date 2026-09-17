@@ -63,7 +63,7 @@ class UrlGenerator extends BaseUrlGenerator
 
         $signature = $request->query('signature');
 
-        if (!is_string($signature)) {
+        if (! is_string($signature)) {
             return false;
         }
 
