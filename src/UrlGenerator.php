@@ -6,6 +6,7 @@ namespace LaravelTrailingSlash;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Routing\UrlGenerator as BaseUrlGenerator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -15,9 +16,9 @@ class UrlGenerator extends BaseUrlGenerator
     /**
      * Format the given URL segments into a single URL.
      *
-     * @param string                         $root
-     * @param string                         $path
-     * @param \Illuminate\Routing\Route|null $route
+     * @param  string  $root
+     * @param  string  $path
+     * @param  Route|null  $route
      */
     public function format($root, $path, $route = null): string
     {
@@ -27,18 +28,18 @@ class UrlGenerator extends BaseUrlGenerator
     /**
      * Determine if the signature from the given request matches the URL.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param bool                     $absolute
-     * @param \Closure|array           $ignoreQuery
-     *
-     * @return bool
+     * @param  bool  $absolute
+     * @param  Closure|array<array-key, string>  $ignoreQuery
      */
-    public function hasCorrectSignature(Request $request, $absolute = true, Closure|array $ignoreQuery = [])
+    public function hasCorrectSignature(Request $request, $absolute = true, Closure|array $ignoreQuery = []): bool
     {
         $url = ($absolute ? $request->url() : '/'.$request->path());
         $url = $url.$this->getTrailingSlash($url);
 
-        $queryString = (new Collection(explode('&', (string) $request->server->get('QUERY_STRING'))))
+        $rawQuery = $request->server->get('QUERY_STRING');
+        $rawQuery = is_string($rawQuery) ? $rawQuery : '';
+
+        $queryString = (new Collection(explode('&', $rawQuery)))
             ->reject(function ($parameter) use ($ignoreQuery) {
                 $parameter = Str::before($parameter, '=');
 
@@ -56,13 +57,13 @@ class UrlGenerator extends BaseUrlGenerator
 
         $original = rtrim($url.'?'.$queryString, '?');
 
-        $keys = call_user_func($this->keyResolver);
+        $keys = ($this->keyResolver)();
 
         $keys = is_array($keys) ? $keys : [$keys];
 
         $signature = $request->query('signature');
 
-        if (!is_string($signature)) {
+        if (! is_string($signature)) {
             return false;
         }
 
@@ -81,14 +82,12 @@ class UrlGenerator extends BaseUrlGenerator
     /**
      * Get the previous path info for the request.
      *
-     * @param mixed $fallback
-     *
-     * @return string
+     * @param  mixed  $fallback
      */
-    public function previousPath($fallback = false)
+    public function previousPath($fallback = false): string
     {
         $rootToPath = rtrim($this->to('/'), '/');
-        $previousPath = rtrim(preg_replace('/\?.*/', '', $this->previous($fallback)), '/');
+        $previousPath = rtrim((string) preg_replace('/\?.*/', '', $this->previous($fallback)), '/');
 
         $previousPath = str_replace($rootToPath, '', $previousPath.$this->getTrailingSlash($previousPath));
 
@@ -97,10 +96,6 @@ class UrlGenerator extends BaseUrlGenerator
 
     /**
      * Get trailing slash suffix for path or url, if no dash (#) is present.
-     *
-     * @param string|null $url
-     *
-     * @return string
      */
     private function getTrailingSlash(?string $url = null): string
     {

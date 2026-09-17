@@ -12,8 +12,8 @@ Adds url formatting and redirection with trailing slash to Laravel framework ver
 
 | Laravel Trailing Slash                                                | Laravel | PHP       |
 |-----------------------------------------------------------------------|---------|-----------|
-| [8.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v8.0.0) | 13.x    | 8.2+      |
-| [7.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v7.0.0) | 12.x    | 8.2+      |
+| [8.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v8.0.1) | 13.x    | 8.3+      |
+| [7.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v7.0.1) | 12.x    | 8.2+      |
 | [6.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v6.1.1) | 11.x    | 8.2+      |
 | [5.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v5.0.0) | 10.x    | 8.1+      |
 | [4.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v4.0.0) | 9.x     | 8.0.2+    |
@@ -37,12 +37,16 @@ composer require fsasvari/laravel-trailing-slash
 Or add it directly by copying next line into composer.json:
 
 ```
-"fsasvari/laravel-trailing-slash": "7.*"
+"fsasvari/laravel-trailing-slash": "8.*"
 ```
 
 ### Step 2: Service Provider
 
-If you are using `Laravel 11.x` and above, register the `LaravelTrailingSlash\RoutingServiceProvider` in your `bootstrap/providers.php` configuration file:
+Laravel automatically discovers this package via package auto-discovery, so manual registration is usually not required.
+
+If you have disabled auto-discovery or prefer manual registration:
+
+* For `Laravel 11.x` and above, register the `LaravelTrailingSlash\RoutingServiceProvider` in your `bootstrap/providers.php` configuration file:
 
 ```php
 return [
@@ -50,10 +54,10 @@ return [
     // ...
     LaravelTrailingSlash\RoutingServiceProvider::class,
     // ...
-],
+];
 ```
 
-If you are using `Laravel 10.x` and below, register the `LaravelTrailingSlash\RoutingServiceProvider` in your `config/app.php` configuration file:
+* For `Laravel 10.x` and below, register the `LaravelTrailingSlash\RoutingServiceProvider` in your `config/app.php` configuration file:
 
 ```php
 'providers' => [
