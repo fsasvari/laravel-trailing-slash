@@ -12,8 +12,8 @@ Adds url formatting and redirection with trailing slash to Laravel framework ver
 
 | Laravel Trailing Slash                                                | Laravel | PHP       |
 |-----------------------------------------------------------------------|---------|-----------|
-| [8.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v8.0.0) | 13.x    | 8.3+      |
-| [7.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v7.0.0) | 12.x    | 8.2+      |
+| [8.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v8.0.1) | 13.x    | 8.3+      |
+| [7.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v7.0.1) | 12.x    | 8.2+      |
 | [6.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v6.1.1) | 11.x    | 8.2+      |
 | [5.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v5.0.0) | 10.x    | 8.1+      |
 | [4.x](https://github.com/fsasvari/laravel-trailing-slash/tree/v4.0.0) | 9.x     | 8.0.2+    |
