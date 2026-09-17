@@ -18,15 +18,15 @@
         }
     ],
     "require": {
-        "php": "^8.2",
-        "illuminate/routing": "^11|^12|^13"
+        "php": "^8.3",
+        "illuminate/routing": "^^13"
     },
     "require-dev": {
-        "illuminate/database": "^11|^12|^13",
+        "illuminate/database": "^13",
         "laravel/pint": "^1.32",
         "mockery/mockery": "^1.6",
-        "phpstan/phpstan": "^1.12|^2.2",
-        "phpunit/phpunit": "^11.5|^12.5"
+        "phpstan/phpstan": "^^2.2",
+        "phpunit/phpunit": "^12.5"
     },
     "autoload": {
         "psr-4": {

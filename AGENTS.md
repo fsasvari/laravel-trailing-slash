@@ -12,8 +12,8 @@ This repository is a lightweight, standalone Laravel package (`fsasvari/laravel-
 
 ## Technical Requirements & Standards
 
-* **PHP Support:** `^8.2`
-* **Laravel Compatibility:** `^11.0|^12.0|^13.0` (`illuminate/routing`, `illuminate/database`)
+* **PHP Support:** `^8.3`
+* **Laravel Compatibility:** `^^13.0` (`illuminate/routing`, `illuminate/database`)
 * **Strict Typing:** All PHP files must declare `declare(strict_types=1);`.
 * **Code Style:** Laravel PER / PSR-12 standard enforced via **Laravel Pint**.
 * **Static Analysis:** PHPStan level 9 (`phpstan.neon.dist`).
