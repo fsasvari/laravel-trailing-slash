@@ -9,4 +9,5 @@ composer.phar
 composer.lock
 phpstan.neon
 phplint.cache
+/.phplint.cache
 Thumbs.db

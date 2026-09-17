@@ -29,19 +29,29 @@ class UrlGenerator extends BaseUrlGenerator
      *
      * @param \Illuminate\Http\Request $request
      * @param bool                     $absolute
-     * @param array                    $ignoreQuery
+     * @param \Closure|array           $ignoreQuery
      *
      * @return bool
      */
     public function hasCorrectSignature(Request $request, $absolute = true, Closure|array $ignoreQuery = [])
     {
-        $ignoreQuery[] = 'signature';
-
         $url = ($absolute ? $request->url() : '/'.$request->path());
         $url = $url.$this->getTrailingSlash($url);
 
         $queryString = (new Collection(explode('&', (string) $request->server->get('QUERY_STRING'))))
-            ->reject(fn ($parameter) => in_array(Str::before($parameter, '='), $ignoreQuery))
+            ->reject(function ($parameter) use ($ignoreQuery) {
+                $parameter = Str::before($parameter, '=');
+
+                if ($parameter === 'signature') {
+                    return true;
+                }
+
+                if ($ignoreQuery instanceof Closure) {
+                    return $ignoreQuery($parameter);
+                }
+
+                return in_array($parameter, $ignoreQuery);
+            })
             ->join('&');
 
         $original = rtrim($url.'?'.$queryString, '?');
@@ -50,10 +60,16 @@ class UrlGenerator extends BaseUrlGenerator
 
         $keys = is_array($keys) ? $keys : [$keys];
 
+        $signature = $request->query('signature');
+
+        if (!is_string($signature)) {
+            return false;
+        }
+
         foreach ($keys as $key) {
             if (hash_equals(
                 hash_hmac('sha256', $original, $key),
-                (string) $request->query('signature', '')
+                $signature
             )) {
                 return true;
             }

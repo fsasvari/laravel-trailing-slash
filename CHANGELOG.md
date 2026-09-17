@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v7.1.0 (2026-09-17)
+
+### Added
+- Added support for Laravel 13.x version
+
 ## v7.0.0 (2025-02-21)
 
 ### Added
