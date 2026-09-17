@@ -16,9 +16,9 @@ class UrlGenerator extends BaseUrlGenerator
     /**
      * Format the given URL segments into a single URL.
      *
-     * @param  string  $root
-     * @param  string  $path
-     * @param  Route|null  $route
+     * @param string     $root
+     * @param string     $path
+     * @param Route|null $route
      */
     public function format($root, $path, $route = null): string
     {
@@ -28,8 +28,8 @@ class UrlGenerator extends BaseUrlGenerator
     /**
      * Determine if the signature from the given request matches the URL.
      *
-     * @param  bool  $absolute
-     * @param  Closure|array<array-key, string>  $ignoreQuery
+     * @param bool                             $absolute
+     * @param Closure|array<array-key, string> $ignoreQuery
      */
     public function hasCorrectSignature(Request $request, $absolute = true, Closure|array $ignoreQuery = []): bool
     {
@@ -63,7 +63,7 @@ class UrlGenerator extends BaseUrlGenerator
 
         $signature = $request->query('signature');
 
-        if (! is_string($signature)) {
+        if (!is_string($signature)) {
             return false;
         }
 
@@ -82,7 +82,7 @@ class UrlGenerator extends BaseUrlGenerator
     /**
      * Get the previous path info for the request.
      *
-     * @param  mixed  $fallback
+     * @param mixed $fallback
      */
     public function previousPath($fallback = false): string
     {
